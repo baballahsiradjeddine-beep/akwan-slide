@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ملخص تنفيذي | مقترح شراكة ألعاب أكوان</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F172A;
+    --navy-light: #1E293B;
+    --mint: #0D9488;
+    --gold: #D97706;
+    --gray-bg: #F8FAFC;
+    --gray-border: #E2E8F0;
+    --text-dark: #0F172A;
+    --text-muted: #475569;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #E2E8F0;
+    color: var(--text-dark);
+    font-family: 'Tajawal', sans-serif;
+    padding: 20px 0;
+  }
+
+  /* A4 Page Container */
+  .a4-page {
+    width: 210mm;
+    height: 297mm;
+    background: #FFFFFF;
+    margin: 30px auto;
+    padding: 12mm 14mm 16mm;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* Header Brand Accent Bar */
+  .a4-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #6C4EBE, #2EC4B6, #FFB800);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--gray-border);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .title-area h1 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 2px;
+    color: var(--navy);
+  }
+
+  .title-area p {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  .logo-area {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--mint);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .logo-area svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+  }
+
+  /* Grid Layout */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .summary-block {
+    background: var(--gray-bg);
+    border: 1px solid var(--gray-border);
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+
+  .summary-block h3 {
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--navy);
+    border-bottom: 1px solid var(--gray-border);
+    padding-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .summary-list {
+    list-style: none;
+  }
+
+  .a4-page[dir="rtl"] .summary-list {
+    padding-right: 0;
+  }
+
+  .summary-list li {
+    font-size: 11px;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin-bottom: 4px;
+    position: relative;
+    padding-right: 12px;
+  }
+
+  .a4-page[dir="rtl"] .summary-list li::before {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: var(--mint);
+    font-weight: 900;
+  }
+
+  .a4-page[dir="ltr"] .summary-list li {
+    padding-right: 0;
+    padding-left: 12px;
+  }
+
+  .a4-page[dir="ltr"] .summary-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--mint);
+    font-weight: 900;
+  }
+
+  .full-width-block {
+    grid-column: span 2;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 8mm;
+    left: 14mm;
+    right: 14mm;
+    border-top: 1px solid var(--gray-border);
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--text-muted);
+  }
+
+  /* English Page Specific Styles */
+  .a4-page[dir="ltr"] {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .a4-page[dir="ltr"] .title-area h1 {
+    font-size: 17px;
+  }
+
+  .a4-page[dir="ltr"] .logo-area {
+    text-align: right;
+  }
+
+  /* Arabic Page Specific Styles (Enlarge to fill page beautifully) */
+  .a4-page[dir="rtl"] .summary-list li {
+    font-size: 11.8px;
+    line-height: 1.42;
+    margin-bottom: 5px;
+  }
+
+  .a4-page[dir="rtl"] .summary-block h3 {
+    font-size: 13.5px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+  }
+
+  .a4-page[dir="rtl"] .summary-block {
+    padding: 12px 14px;
+  }
+
+  .a4-page[dir="rtl"] .summary-grid {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  @media print {
+    body {
+      background: none !important;
+      padding: 0 !important;
+    }
+    .a4-page {
+      margin: 0 !important;
+      box-shadow: none !important;
+      page-break-after: always !important;
+      break-after: page !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1: ARABIC EXECUTIVE SUMMARY ==================== -->
+  <div class="a4-page" dir="rtl">
+    <div class="header">
+      <div class="title-area">
+        <h1>ملخص تنفيذي | شراكة نمو وتطوير رقمي</h1>
+        <p>ألعاب أكوان التعليمية على منصات يوتيوب وتيك توك</p>
+      </div>
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
+        أكوان AL ARAB
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <!-- Block 1: The Opportunity (Slide 2) -->
+      <div class="summary-block">
+        <h3>🎯 الفرصة الاستراتيجية وقنوات النمو</h3>
+        <ul class="summary-list">
+          <li><strong>موسمية الطلب والوصول:</strong> استغلال الصيف لرفع كفاءة الوصول الرقمي وخفض تكلفة النقرة (CPC) بفعالية.</li>
+          <li><strong>تحفيز الطلب العضوي:</strong> تقديم المنتجات واقعياً لتسريع اتخاذ قرار الشراء واقتناء اللعبة.</li>
+          <li><strong>تعظيم القيمة العمرية (LTV):</strong> بناء موثوقية الهوية التجارية لرفع معدل تكرار الشراء.</li>
+        </ul>
+      </div>
+
+      <!-- Block 2: Interactive Games (Slide 3) -->
+      <div class="summary-block">
+        <h3>🎲 تفعيل ألعاب يوتيوب التفاعلية</h3>
+        <ul class="summary-list">
+          <li><strong>لعبة الذاكرة العملاقة:</strong> تحدي حركي يعزز الذاكرة والتركيز كحل بديل للشاشات ويرسخ الوعي بالمنتج.</li>
+          <li><strong>تكوين الكلمات والحروف:</strong> تحدي لغوي بمجسمات ضخمة تعزز التمييز الحسي وترفع معدل المبيعات.</li>
+          <li><strong>لعبة التحية والرد:</strong> نشاط اجتماعي سلوكي يدعم الذكاء الاجتماعي وموضعة المنتج كبديل ترفيهي وصحي.</li>
+        </ul>
+      </div>
+
+      <!-- Block 3: TikTok & Reels (Slide 4) -->
+      <div class="summary-block">
+        <h3>📱 تحديات تيك توك والانتشار الفوري</h3>
+        <ul class="summary-list">
+          <li><strong>تحدي التحية والبالون الحرف:</strong> لجين تلقي التحية، والخطأ يؤدي لانفجار البالونة المائية لجذب المشاهدين.</li>
+          <li><strong>تحدي الكلمات السريعة (15 ثانية):</strong> سباق زمني حماسي لتركيب الكلمة والحصول على هدية فورية أمام الكاميرا.</li>
+          <li><strong>تحدي الذاكرة الخاطفة:</strong> حفظ مواضع بطاقات الحروف خلال 15 ثانية فقط لردود فعل كوميدية وعفوية.</li>
+        </ul>
+      </div>
+
+      <!-- Block 4: Scope of Services (Slide 5) -->
+      <div class="summary-block">
+        <h3>🛠️ نطاق إدارة العمليات المتكاملة</h3>
+        <ul class="summary-list">
+          <li><strong>السيناريو وصناعة المحتوى:</strong> صياغة سيناريوهات موجهة وجذابة تبرز المزايا التربوية لـ "أكوان".</li>
+          <li><strong>إدارة التوجيه الفني والتصوير:</strong> توجيه كامل يضمن كفاءة زوايا الكاميرا وتطابق الجودة البصرية مع المعايير.</li>
+          <li><strong>المعالجة ودورة النشر:</strong> مونتاج حركي ديناميكي وتأثيرات مساعدة، مع تطبيق الـ SEO الرقمي وإدارة النشر.</li>
+          <li><strong>تكامل البنية التحتية والويب:</strong> تقديم استشارات وتطوير برمجيات وحلول برمجية لرفع مبيعات متجر أكوان (CRO).</li>
+        </ul>
+      </div>
+
+      <!-- Block 5: Production & Directing (Slide 6 - Full Width) -->
+      <div class="summary-block full-width-block">
+        <h3>🎬 خطة الإنتاج والإخراج الفني للتحديات</h3>
+        <ul class="summary-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <li><strong>المواصفات الفنية والعتاد:</strong> تصوير ذكي واقتصادي (كاميرا أو هاتفين آيفون) بجودة سينمائية سينمائية مبهرة، مع تركيز استثماري كامل على نقاء الصوت وتوزيع الإضاءة.</li>
+            <li><strong>فلسفة تقليص التكاليف:</strong> بدء العمل بأقل تكلفة ممكنة لتقليل التكاليف التأسيسية لأقصى حد قبل التحقق من المردود الاستثماري.</li>
+            <li><strong>تدابير السلامة والبيئة:</strong> استوديو دافئ مبطن بالكامل للسلامة يعتمد ألوان الهوية لخدمة التسويق غير المباشر بذكاء.</li>
+          </div>
+          <div>
+            <li><strong>إدارة وتيسير المجموعة:</strong> 3 إلى 4 أطفال (5-9 سنوات) يقودهم ميسر ألعاب متمرس بأسلوب تفاعلي وتوجيه تشجيعي.</li>
+            <li><strong>التسويق غير المباشر بذكاء:</strong> تصميم رفوف خشبية دافئة تعرض ألعاب ومنتجات أكوان الحالية في خلفية التصوير بطريقة جمالية وجذابة تزيد رغبة الأطفال التلقائية بالامتلاك.</li>
+            <li><strong>النشر والجدولة:</strong> 2 إلى 4 مقاطع يوتيوب شهرياً، مع استخلاص 10 إلى 15 مقطعاً قصيراً للنشر اليومي على تيك توك وريلز.</li>
+          </div>
+        </ul>
+      </div>
+
+      <!-- Block 6: Collaboration Model (Slide 7 - Full Width) -->
+      <div class="summary-block full-width-block">
+        <h3>🤝 هيكلية العلاقة المهنية والشراكة</h3>
+        <ul class="summary-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <li><strong>الجدوى الاستراتيجية:</strong> التسويق المرئي التزام طويل المدى يحتاج استدامة وتخطيطاً مستمراً لضمان العائد الاستثماري.</li>
+            <li><strong>النموذج التعاقدي (Full-Time):</strong> التواجد المستمر والسرعة التشغيلية وضمان التنسيق التكاملي للمحتوى والتسويق والدعم التقني.</li>
+          </div>
+          <div>
+            <li><strong>العائد المالي والتعويضات:</strong> نقاش مرن للميزانيات والرواتب مبني على الصداقة والنجاح المشترك وسهولة التوافق والبدء فوراً.</li>
+            <li><strong>تكامل الدعم الرقمي والبرمجي:</strong> دعم فني شامل للقناة مع تطوير الويب لمتجر أكوان كجزء من الشراكة المتكاملة.</li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>مُقترح شراكة وتفعيل رقمي - ألعاب أكوان التعليمية</span>
+      <span>صفحة 1 من 2</span>
+      <span>مقدّم من: سراج</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2: ENGLISH EXECUTIVE SUMMARY ==================== -->
+  <div class="a4-page" dir="ltr">
+    <div class="header">
+      <div class="title-area">
+        <h1>Executive Summary | Digital Growth & Activation Partnership</h1>
+        <p>Akwan Educational Games on YouTube & TikTok Platforms</p>
+      </div>
+      <div class="logo-area">
+        AKWAN AL ARAB
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <!-- Block 1: The Opportunity (Slide 2) -->
+      <div class="summary-block">
+        <h3>🎯 Strategic Opportunity & Target Growth Channels</h3>
+        <ul class="summary-list">
+          <li><strong>Summer Demand Seasonality:</strong> Capitalizing on the summer peak to optimize organic digital reach and efficiently lower Cost-Per-Click (CPC) metrics.</li>
+          <li><strong>Organic Demand Generation:</strong> Utilizing in-video real-world gameplay demonstrations to accelerate the customer's purchase decision funnel.</li>
+          <li><strong>LTV Maximization:</strong> Constructing a high-credibility brand presence to elevate customer retention and Lifetime Value (LTV).</li>
+        </ul>
+      </div>
+
+      <!-- Block 2: Interactive Games (Slide 3) -->
+      <div class="summary-block">
+        <h3>🎲 Interactive Prop Customization & Value Proposition</h3>
+        <ul class="summary-list">
+          <li><strong>Giant Memory Game:</strong> Active recall and motor-sensory challenge designed as a screen-time alternative while reinforcing brand memory recall.</li>
+          <li><strong>Word Construction:</strong> Spell-building and language challenge with oversized physical elements to drive sensory differentiation and sales.</li>
+          <li><strong>Greeting & Social:</strong> Behavioral and social intelligence activity positioned as a healthy, high-engagement entertainment alternative.</li>
+        </ul>
+      </div>
+
+      <!-- Block 3: TikTok & Reels (Slide 4) -->
+      <div class="summary-block">
+        <h3>📱 TikTok Challenges & Rapid Short-Form Channels</h3>
+        <ul class="summary-list">
+          <li><strong>Balloon Greeting Challenge:</strong> Lujain delivers greetings with water balloons popping on errors, creating viral high-retention opening hooks.</li>
+          <li><strong>15s Rapid Word Challenge:</strong> A fast-paced countdown race to assemble words with physical cards for instant on-screen gifts.</li>
+          <li><strong>Lightning Memory Challenge:</strong> Kids get 15 seconds to memorize giant card layouts, triggering genuine, highly shareable reactions.</li>
+        </ul>
+      </div>
+
+      <!-- Block 4: Scope of Services (Slide 5) -->
+      <div class="summary-block">
+        <h3>🛠️ Operational Management Lifecycle & Tech Integration</h3>
+        <ul class="summary-list">
+          <li><strong>Planning & Scriptwriting:</strong> Formulating structured, pedagogy-oriented scripts that emphasize Akwan's educational core values.</li>
+          <li><strong>Art & Production Direction:</strong> Overseeing the complete visual workflow, including camera angles, aesthetics, and rigorous quality control.</li>
+          <li><strong>Post-Production & Publishing:</strong> Executing advanced editing, sound design, SEO indexing, and multi-channel publication.</li>
+          <li><strong>E-Commerce & Tech Integration:</strong> Delivering direct development, performance consulting, and CRO optimization for the Shopify store.</li>
+        </ul>
+      </div>
+
+      <!-- Block 5: Production & Directing (Slide 6 - Full Width) -->
+      <div class="summary-block full-width-block">
+        <h3>🎬 Operational & Art Direction Parameters</h3>
+        <ul class="summary-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <li><strong>Technical & Gear Setup:</strong> Smart and highly cost-effective setup (one camera or two iPhones) with cinematic quality, focusing entirely on high-quality lighting and crisp audio.</li>
+            <li><strong>Cost-Efficient Philosophy:</strong> Keeping initial operational costs minimized until solid performance metrics and ROI are proven in practice.</li>
+            <li><strong>Safety & Branded Playroom:</strong> A fully padded, safe playroom designed with corporate brand colors for subtle, organic brand reinforcement.</li>
+          </div>
+          <div>
+            <li><strong>Cohort Dynamics:</strong> Engaging 3-4 children (ages 5-9) led by an experienced game facilitator for dynamic, stress-free group play.</li>
+            <li><strong>Product Placement Integration:</strong> Displaying Akwan packaging elegantly on background wooden shelving to reinforce brand recall without distracting viewers.</li>
+            <li><strong>Publishing Frequency:</strong> Publishing 2-4 long videos monthly, while extracting 10-15 high-retention short reels/TikToks for daily organic traffic.</li>
+          </div>
+        </ul>
+      </div>
+
+      <!-- Block 6: Collaboration Model (Slide 7 - Full Width) -->
+      <div class="summary-block full-width-block">
+        <h3>🤝 Partnership Framework & Operational Commitment</h3>
+        <ul class="summary-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <li><strong>Strategic Feasibility:</strong> Recognizing digital assets as long-term investments requiring consistent execution and roadmap sustainability.</li>
+            <li><strong>Dedicated Contract Model:</strong> Full-time dedicated daily integration ensuring rapid response cycles, tech alignment, and content execution.</li>
+          </div>
+          <div>
+            <li><strong>Flexible Compensation:</strong> Highly adaptable, budget-friendly salary alignment based on mutual trust, friendship, and collective growth metrics.</li>
+            <li><strong>Holistic Digital Overhaul:</strong> Full support spanning YouTube management, short-form publishing, and direct Shopify development services.</li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Digital Activation Proposal | Akwan Educational Games</span>
+      <span>Page 2 of 2</span>
+      <span>Prepared by: Siraj</span>
+    </div>
+  </div>
+
+</body>
+</html>
