@@ -1,0 +1,2600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مقترح شراكة | ألعاب أكوان على يوتيوب</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%236C4EBE%22/><circle cx=%2250%22 cy=%2250%22 r=%2235%22 fill=%22none%22 stroke=%22%23FFB800%22 stroke-width=%226%22 stroke-dasharray=%22150 40%22 transform=%22rotate(-30 50 50)%22/><text x=%2250%%22 y=%2268%%22 font-size=%2252%22 font-weight=%22900%22 fill=%22%23FFFFFF%22 font-family=%22sans-serif%22 text-anchor=%22middle%22>A</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #6C4EBE;
+    --purple-light: #9B7FE8;
+    --purple-dark: #4A3490;
+    --mint: #2EC4B6;
+    --mint-light: #A7F3D0;
+    --gold: #FFB800;
+    --gold-light: #FFE082;
+    --cream: #FFFDF9;
+    --white: #FFFFFF;
+    --text-dark: #1E1B4B;
+    --text-mid: #475569;
+    --pink: #FF3366;
+    --pink-light: #FDA4AF;
+    --bg-dark: #0B051E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg-dark);
+    color: var(--white);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* ===== SLIDER WRAPPER ===== */
+  .slider-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    direction: rtl;
+    will-change: scroll-position;
+  }
+
+  /* Hide scrollbar */
+  .slider-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .slider-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ===== SLIDE COMPONENT ===== */
+  .slide {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 60px;
+    transform: translate3d(0, 0, 0); /* Forces GPU hardware acceleration layer */
+  }
+
+  /* Background elements with slow drifting keyframe animations */
+  .bg-decor {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
+  }
+
+  .decor-purple { 
+    width: 450px; height: 450px; background: var(--purple); top: -10%; right: -10%; 
+    animation: drift-blob-1 22s ease-in-out infinite;
+  }
+  .decor-mint { 
+    width: 350px; height: 350px; background: var(--mint); bottom: -10%; left: -10%; 
+    animation: drift-blob-2 26s ease-in-out infinite;
+  }
+  .decor-gold { 
+    width: 250px; height: 250px; background: var(--gold); top: 40%; left: 30%; 
+    animation: drift-blob-3 30s ease-in-out infinite;
+  }
+
+  @keyframes drift-blob-1 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(50px, -70px, 0) scale(1.1); }
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+  }
+  @keyframes drift-blob-2 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-60px, 50px, 0) scale(0.9); }
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+  }
+  @keyframes drift-blob-3 {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(40px, 40px, 0) scale(1.15); }
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+  }
+
+  .slide-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ===== TYPOGRAPHY & HEADERS ===== */
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mint-light);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .section-tag svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--mint);
+  }
+
+  .section-title {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .section-title span {
+    background: linear-gradient(135deg, var(--gold), var(--pink), var(--purple-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  /* ===== NAVIGATION DOCK ===== */
+  .nav-dock {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 14px;
+    background: rgba(11, 5, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+    padding: 10px 18px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 2px solid transparent;
+  }
+
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+    border-color: var(--gold-light);
+    box-shadow: 0 0 10px var(--gold);
+  }
+
+  .nav-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Progress Bar */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--purple), var(--mint), var(--gold));
+    z-index: 9999;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0%;
+  }
+
+  /* ===== PREMIUM PLAYFUL CARDS ===== */
+  .grid-layout {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .card-playful {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                background 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                border-color 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                box-shadow 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform, box-shadow;
+  }
+
+  .card-playful::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; left: 0;
+    height: 4px;
+    background: var(--card-accent, var(--purple));
+    border-radius: 24px 24px 0 0;
+  }
+
+  .card-playful:hover {
+    transform: translateY(-8px) scale(1.01);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  .svg-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--svg-bg, rgba(108,78,190,0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: var(--card-accent, var(--purple-light));
+  }
+
+  .svg-box svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.2;
+  }
+
+  .card-playful h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .card-playful p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+  }
+
+  /* ===== SLIDE 1: COVER ===== */
+  .slide-1 .cover-badge {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 8px 24px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .slide-1 .cover-badge svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--gold);
+  }
+
+  .slide-1 .cover-badge span {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+
+  .slide-1 .cover-title {
+    font-size: 58px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .slide-1 .cover-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .stat-pill .num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .stat-pill .txt {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+  }
+
+  /* ===== SLIDE 2: OPPORTUNITY ===== */
+  .opp-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+  }
+
+  /* ===== SLIDE 3: GAMES & VISUALS ===== */
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1050px;
+  }
+
+  .video-mockup {
+    margin-top: 18px;
+    height: 160px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .video-mockup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .video-mockup:hover img {
+    transform: scale(1.06);
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+
+  .video-mockup:hover .play-overlay {
+    background: rgba(0,0,0,0.15);
+  }
+
+  .play-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.9);
+    color: var(--purple-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .video-mockup:hover .play-btn {
+    transform: scale(1.1);
+    background: var(--gold);
+    color: var(--text-dark);
+  }
+
+  .mockup-label {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 10px;
+    background: rgba(0,0,0,0.65);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .card-purple { --card-accent: var(--purple); --svg-bg: rgba(108,78,190,0.15); }
+  .card-mint { --card-accent: var(--mint); --svg-bg: rgba(46,196,182,0.15); }
+  .card-gold { --card-accent: var(--gold); --svg-bg: rgba(255,184,0,0.15); }
+  .card-pink { --card-accent: var(--pink); --svg-bg: rgba(255,51,102,0.15); }
+
+  /* ===== SLIDE TikTok ===== */
+  .tiktok-challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 8px;
+  }
+
+  .tiktok-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid var(--card-accent, var(--purple));
+  }
+  .tiktok-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+
+  .tiktok-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 14px 10px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .tiktok-icon-box {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tiktok-icon-box svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--tc, var(--purple));
+    fill: none;
+  }
+
+  .tiktok-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tiktok-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    width: fit-content;
+  }
+  .tiktok-card-meta h3 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .tiktok-card-body {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .tiktok-scenario {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    border-right: 2px solid rgba(255,255,255,0.15);
+    padding-right: 8px;
+  }
+
+  .tiktok-mechanics {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mechanic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+  }
+  .mechanic-dot {
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    border-radius: 50%;
+    margin-top: 4px;
+  }
+
+  .tiktok-viral-tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin-top: auto;
+    letter-spacing: 0.3px;
+  }
+
+  /* Letters balloon demo */
+  .tiktok-letters-demo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    border: 1px dashed rgba(255,255,255,0.12);
+  }
+  .letter-balloon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bc, var(--mint));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--bg-dark);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    animation: floatBalloon 3s ease-in-out infinite alternate;
+  }
+  .letter-balloon:nth-child(2) { animation-delay: 0.5s; }
+  .letter-balloon:nth-child(3) { animation-delay: 1s; }
+  @keyframes floatBalloon {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+  }
+  .letters-arrow {
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 700;
+    flex: 1;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Countdown display */
+  .tiktok-countdown {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgba(255,184,0,0.2);
+  }
+  .countdown-display {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    animation: pulse-count 1s ease-in-out infinite;
+  }
+  @keyframes pulse-count {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.85; }
+  }
+  .countdown-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /* Kids balloon row visual */
+  .kids-balloon-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 10px 4px 4px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px dashed rgba(255,255,255,0.1);
+  }
+  .kid-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .letter-balloon-shape {
+    width: 46px;
+    height: 52px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: var(--bc, var(--purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: rgba(0,0,0,0.7);
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    animation: floatBalloon 2.5s ease-in-out infinite alternate;
+  }
+  .letter-balloon-shape::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 10px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 2px;
+  }
+  .kid-unit:nth-child(2) .letter-balloon-shape { animation-delay: 0.5s; }
+  .kid-unit:nth-child(3) .letter-balloon-shape { animation-delay: 1s; }
+  .kid-unit:nth-child(4) .letter-balloon-shape { animation-delay: 1.5s; }
+  .kid-unit:nth-child(5) .letter-balloon-shape { animation-delay: 2s; }
+  .kid-icon {
+    font-size: 22px;
+    line-height: 1;
+    margin-top: 6px;
+  }
+
+  /* Challenge image placeholder */
+  .challenge-img-placeholder {
+    width: 100%;
+    height: 90px;
+    border: 2px dashed rgba(255,255,255,0.18);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.03);
+    transition: border-color 0.3s, background 0.3s;
+    cursor: pointer;
+  }
+  .challenge-img-placeholder:hover {
+    border-color: var(--ph, var(--purple-light));
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.6);
+  }
+  .challenge-img-placeholder svg {
+    width: 24px; height: 24px;
+    stroke: currentColor;
+    fill: none;
+  }
+  .challenge-img-placeholder span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== SLIDE 4: SERVICES ===== */
+
+  .services-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .service-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card .svg-box {
+    margin-bottom: 12px;
+  }
+
+  .service-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .service-card p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ===== SLIDE 6: COLLABORATION MODEL ===== */
+  .pricing-grid {
+    display: grid;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .price-card {
+    border-radius: 28px;
+    padding: 32px;
+    border: 2px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .price-card.featured {
+    border-color: var(--mint);
+    background: linear-gradient(135deg, rgba(45,27,107,0.3), rgba(108,78,190,0.15));
+    box-shadow: 0 15px 40px rgba(46,196,182,0.1);
+  }
+
+  .price-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  }
+
+  .price-card .badge-featured {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--mint);
+    color: var(--bg-dark);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 12px;
+    border-radius: 50px;
+  }
+
+  .price-card .plan-name {
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.6;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .price-card .plan-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .price-card .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: right;
+  }
+
+  .price-card .price-features li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .price-card .price-features li svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--mint);
+    flex-shrink: 0;
+  }
+
+  /* ===== SLIDE 7: WHY ME ===== */
+  .why-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1050px;
+  }
+
+  /* ===== SLIDE 8: CTA & CONTACT ===== */
+  .btn-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), #E8941A);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 16px;
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(245,166,35,0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(245,166,35,0.45);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-secondary svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.16);
+    transform: translateY(-4px);
+  }
+
+  .contact-info-row {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 18px 36px;
+  }
+
+  .contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .contact-pill svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--mint);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .animate-in {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), 
+                opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+                scale 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform, opacity;
+  }
+
+  .animate-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .delay-1 { transition-delay: 0.08s; }
+  .delay-2 { transition-delay: 0.16s; }
+  .delay-3 { transition-delay: 0.24s; }
+  .delay-4 { transition-delay: 0.32s; }
+  .delay-5 { transition-delay: 0.40s; }
+  .delay-6 { transition-delay: 0.48s; }
+
+  /* ===== CUSTOMIZER SIDEBAR ===== */
+  .customizer-trigger {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10001;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .customizer-trigger svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--white);
+    transition: transform 0.3s ease;
+  }
+
+  .customizer-trigger:hover svg {
+    transform: rotate(45deg);
+  }
+
+  .customizer-trigger:hover {
+    background: var(--purple);
+    border-color: var(--purple-light);
+    transform: scale(1.05);
+  }
+
+  .customizer-panel {
+    position: fixed;
+    top: 0;
+    right: -380px;
+    width: 360px;
+    height: 100%;
+    background: rgba(11, 5, 30, 0.94);
+    backdrop-filter: blur(25px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10000;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    overflow-y: auto;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .customizer-panel.open {
+    right: 0;
+  }
+
+  .customizer-panel h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+  }
+
+  .customizer-panel h3 svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+  }
+
+  .customizer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-grow: 1;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .form-group input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--white);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 13px;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--mint);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 8px rgba(46,196,182,0.25);
+  }
+
+  .customizer-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-save {
+    background: linear-gradient(135deg, var(--mint), #2A8A84);
+    color: var(--text-dark);
+    font-weight: 800;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46,196,182,0.3);
+  }
+
+  .btn-pdf {
+    background: linear-gradient(135deg, var(--purple-light), var(--purple));
+    color: var(--white);
+    font-weight: 800;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-pdf:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108,78,190,0.3);
+  }
+
+  .btn-close-panel {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-close-panel:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--white);
+  }
+
+  /* ===== LIGHTBOX MODAL ===== */
+  /* ===== LIGHTBOX MODAL UPGRADE ===== */
+  .lightbox-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 5, 30, 0.96);
+    backdrop-filter: blur(15px);
+    z-index: 11000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px;
+    direction: rtl;
+  }
+  .lightbox-modal.open {
+    display: flex;
+    opacity: 1;
+  }
+  .lightbox-content {
+    max-width: 950px;
+    width: 100%;
+    background: rgba(15, 10, 36, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: right;
+  }
+  .lightbox-modal.open .lightbox-content {
+    transform: scale(1);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  .lightbox-close:hover {
+    background: var(--pink);
+    border-color: var(--pink-light);
+    transform: scale(1.05);
+  }
+  .lightbox-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  .lightbox-body {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .lightbox-img-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    max-height: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .lightbox-details-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .details-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 18px;
+    padding: 16px 20px;
+  }
+  .details-sec-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--purple-light);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .details-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .details-list li {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    position: relative;
+    padding-right: 18px;
+  }
+  .details-list li::before {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: var(--mint);
+    font-weight: 900;
+  }
+  .details-list li.sales-bullet::before {
+    color: var(--gold);
+  }
+
+  @media (max-width: 768px) {
+    .lightbox-body {
+      grid-template-columns: 1fr !important;
+      gap: 16px;
+    }
+  }
+
+  /* Zoomable images support */
+  .zoomable-img {
+    cursor: zoom-in;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  }
+  .zoomable-img:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  .lightbox-modal.image-only .lightbox-details-col,
+  .lightbox-modal.image-only .lightbox-title {
+    display: none;
+  }
+  .lightbox-modal.image-only .lightbox-body {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-modal.image-only .lightbox-content {
+    max-width: 700px;
+    padding: 16px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .lightbox-modal.image-only .lightbox-img {
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+  }
+  .lightbox-modal.image-only .lightbox-close {
+    top: -10px;
+    left: -10px;
+    background: rgba(0,0,0,0.6);
+  }
+
+  .lightbox-modal.image-only #lightbox-video {
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+    width: 100%;
+  }
+
+  /* Play Button Overlay Styles */
+  .lightbox-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(108, 78, 190, 0.85); /* Premium purple brand color */
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(108, 78, 190, 0.6), inset 0 0 15px rgba(255,255,255,0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+    animation: playPulse 2s infinite;
+  }
+  .lightbox-play-btn svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 4px; /* Center alignment for the triangle play icon */
+  }
+  .lightbox-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    background: var(--purple-light);
+    box-shadow: 0 0 45px rgba(135, 102, 230, 0.8), inset 0 0 20px rgba(255,255,255,0.4);
+    border-color: var(--white);
+  }
+  .lightbox-play-btn:active {
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  /* Pulse animation for premium feel */
+  @keyframes playPulse {
+    0% { box-shadow: 0 0 0 0 rgba(108, 78, 190, 0.6); }
+    70% { box-shadow: 0 0 0 20px rgba(108, 78, 190, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(108, 78, 190, 0); }
+  }
+
+  /* ===== SUB-TABS FOR PRODUCTION SLIDE ===== */
+  .prod-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 6px;
+    position: relative;
+    z-index: 10;
+  }
+  .prod-tab {
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    border: none;
+    font-family: 'Tajawal', sans-serif;
+  }
+  .prod-tab.active {
+    background: var(--purple);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(108, 78, 190, 0.35);
+  }
+  .prod-tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+  }
+  .prod-content-container {
+    width: 100%;
+    max-width: 1050px;
+    position: relative;
+    min-height: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .prod-content-pane {
+    display: none;
+    width: 100%;
+    animation: fadeInPane 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .prod-content-pane.active {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .prod-details-col {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: right;
+  }
+  .prod-detail-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .prod-detail-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--mint);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .prod-detail-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 2.2;
+  }
+  .prod-detail-text h4 {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    color: var(--white);
+  }
+  .prod-detail-text p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+  }
+  .prod-summary-col {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .prod-summary-col::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; left: 0;
+    height: 4px;
+    background: var(--mint);
+  }
+  .prod-summary-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+  .prod-summary-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+  }
+  @keyframes fadeInPane {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .prod-content-pane.active {
+      grid-template-columns: 1fr !important;
+      gap: 16px;
+    }
+    .prod-tabs {
+      flex-wrap: wrap;
+      border-radius: 12px;
+    }
+    .prod-tab {
+      padding: 8px 14px;
+      font-size: 12.5px;
+      flex-grow: 1;
+    }
+    .prod-content-container {
+      min-height: auto;
+    }
+  }
+  @media (max-width: 900px) {
+    .slide { padding: 40px 30px; }
+    .opp-grid { grid-template-columns: 1fr; max-width: 450px; }
+    .games-grid { grid-template-columns: 1fr; max-width: 450px; }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-layout { grid-template-columns: repeat(3, 1fr); }
+    .section-title { font-size: 28px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 450px; }
+  }
+
+  @media (max-width: 600px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .services-layout { grid-template-columns: repeat(2, 1fr); }
+    .btn-row { flex-direction: column; }
+    .contact-info-row { flex-direction: column; gap: 12px; }
+    .slide-1 .cover-title { font-size: 36px; }
+  }
+
+  /* Mobile blocker styles */
+  .mobile-blocker-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #0f0a24;
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    direction: rtl;
+    font-family: 'Tajawal', sans-serif;
+  }
+  .mobile-blocker-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 40px 30px;
+    border-radius: 24px;
+    max-width: 480px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+  }
+  .mobile-blocker-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: rgba(108, 78, 190, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--purple-light);
+    box-shadow: 0 0 30px rgba(108,78,190,0.3);
+  }
+  .mobile-blocker-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+  .mobile-blocker-content h2 {
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 800;
+  }
+  .mobile-blocker-content p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .mobile-blocker-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    border-radius: 30px;
+    color: var(--white);
+    font-size: 13.5px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(108, 78, 190, 0.4);
+  }
+
+  /* Show overlay on screens less than 1025px wide */
+  @media (max-width: 1024px) {
+    body > *:not(.mobile-blocker-overlay) {
+      display: none !important;
+    }
+    body {
+      background: #0f0a24 !important;
+      overflow: hidden !important;
+    }
+    .mobile-blocker-overlay {
+      display: flex !important;
+    }
+  }
+
+  /* ===== PRINT / PDF EXPORT ===== */
+  @media print {
+    body {
+      background: #0B051E !important;
+      color: #FFFFFF !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      overflow: visible !important;
+      height: auto !important;
+    }
+    .slider-wrapper {
+      display: block !important;
+      height: auto !important;
+      width: auto !important;
+      overflow: visible !important;
+    }
+    .slide {
+      page-break-after: always !important;
+      break-after: page !important;
+      height: 100vh !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 40px !important;
+    }
+    .nav-dock, .progress-bar, .customizer-trigger, .customizer-panel, .lightbox-modal {
+      display: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mobile Blocker Overlay -->
+<div class="mobile-blocker-overlay">
+  <div class="mobile-blocker-content">
+    <div class="mobile-blocker-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <h2>عذراً، هذا العرض مصمم للشاشات الكبيرة 💻</h2>
+    <p>
+      لتجربة تفاعلية وبصرية متكاملة تليق بـ <strong>ألعاب أكوان</strong> واستعراض الفيديوهات التعليمية، يرجى فتح هذا الرابط من خلال جهاز الكمبيوتر أو الحاسوب المحمول.
+    </p>
+    <div class="mobile-blocker-badge">يرجى تشغيله من الحاسوب لتجربة أفضل 🚀</div>
+  </div>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Customizer Sidebar Panel -->
+<div class="customizer-panel" id="customizer-panel">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    تخصيص بيانات العرض
+  </h3>
+  <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 16px; line-height: 1.5;">
+    قم بتحديث اسمك وبيانات الاتصال الخاصة بك ليتم تطبيقها فوراً على مقترح الشراكة.
+  </p>
+
+  <div class="customizer-form">
+    <div class="form-group">
+      <label for="input-name">الاسم:</label>
+      <input type="text" id="input-name" placeholder="سراج">
+    </div>
+    <div class="form-group">
+      <label for="input-wa">رقم الواتساب:</label>
+      <input type="text" id="input-wa" placeholder="+213 560688510">
+    </div>
+    <div class="form-group" style="display: none;">
+      <label for="input-email">البريد الإلكتروني:</label>
+      <input type="email" id="input-email" placeholder="siraj@example.com">
+    </div>
+
+    <div class="customizer-actions">
+      <button class="btn-save" onclick="saveCustomizer()">💾 حفظ وتحديث المقترح</button>
+      <button class="btn-pdf" onclick="exportToPDF()">📤 تصدير PDF أفقي</button>
+      <button class="btn-close-panel" onclick="toggleCustomizer()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightbox-modal" onclick="closeLightboxOnBg(event)">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <h3 class="lightbox-title" id="lightbox-title">اسم اللعبة</h3>
+    
+    <div class="lightbox-body">
+      <!-- Image Column -->
+      <div class="lightbox-img-col" style="position: relative; display: flex; align-items: center; justify-content: center; width: 100%;">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Gameplay simulator">
+        
+        <!-- Video Player (gorgeous vertical-first style) -->
+        <video class="lightbox-video" id="lightbox-video" controls style="display: none; width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); max-height: 85vh; object-fit: contain;"></video>
+        
+        <!-- Premium Pulsing Play Button overlay -->
+        <button class="lightbox-play-btn" id="lightbox-play-btn" onclick="playLightboxVideo()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      
+      <!-- Details Column -->
+      <div class="lightbox-details-col">
+        <div class="details-section">
+          <h4 class="details-sec-title">🎬 فكرة التحدي وإنتاج الفيديو</h4>
+          <ul class="details-list" id="lightbox-ideas-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+        
+        <div class="details-section">
+          <h4 class="details-sec-title" style="color: var(--gold-light);">📈 ربط المنتجات وزيادة المبيعات</h4>
+          <ul class="details-list" id="lightbox-sales-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Dock -->
+<div class="nav-dock" id="navDock">
+  <div class="nav-dot active" onclick="scrollToSlide(0)" title="الغلاف"></div>
+  <div class="nav-dot" onclick="scrollToSlide(1)" title="الفرصة"></div>
+  <div class="nav-dot" onclick="scrollToSlide(2)" title="الألعاب"></div>
+  <div class="nav-dot" onclick="scrollToSlide(3)" title="تيك توك وريلز"></div>
+  <div class="nav-dot" onclick="scrollToSlide(4)" title="الخدمات"></div>
+  <div class="nav-dot" onclick="scrollToSlide(5)" title="خطة الإنتاج"></div>
+  <div class="nav-dot" onclick="scrollToSlide(6)" title="التعاون"></div>
+  <div class="nav-dot" onclick="scrollToSlide(7)" title="لنبدأ"></div>
+</div>
+
+<!-- Main Horizontal Slider Wrapper -->
+<div class="slider-wrapper" id="sliderWrapper">
+
+  <!-- ==================== SLIDE 1: COVER ==================== -->
+  <section class="slide slide-1" id="slide-0">
+    <div class="bg-decor decor-purple"></div>
+    <div class="bg-decor decor-mint"></div>
+    <div class="bg-decor decor-gold"></div>
+
+    <div class="slide-content">
+      <div class="cover-badge animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--gold);"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
+        <span>شراكة نمو وتطوير | ألعاب أكوان</span>
+      </div>
+
+      <h1 class="cover-title animate-in delay-1">
+        ألعاب أكوان التعليمية<br>
+        <span>على يوتيوب وتيك توك</span>
+      </h1>
+
+      <p class="cover-subtitle animate-in delay-2">
+        مقترح عملي لتحويل ألعاب أكوان إلى تحديات ومنافسات حركية واقعية للأطفال تُصور وتنشر بأسلوب تفاعلي لزيادة الانتشار ورفع المبيعات مباشرة.
+      </p>
+
+      <div class="stats-row animate-in delay-3">
+        <div class="stat-pill">
+          <span class="num">3</span>
+          <span class="txt">ألعاب جاهزة للتفعيل</span>
+        </div>
+        <div class="stat-pill">
+          <span class="num">2</span>
+          <span class="txt">منصة استهداف قوية</span>
+        </div>
+        <div class="stat-pill">
+          <span class="num">100%</span>
+          <span class="txt">محتوى تفاعلي هادف</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 2: OPPORTUNITY ==================== -->
+  <section class="slide slide-2" id="slide-1">
+    <div class="bg-decor decor-purple" style="opacity:0.15;"></div>
+    <div class="bg-decor decor-mint" style="opacity:0.15;"></div>
+
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="m9.09 9 3-4 3 4M12 5v14"/></svg>
+        لماذا هذا المشروع الآن?
+      </div>
+      
+      <h2 class="section-title animate-in delay-1">الفرصة التسويقية <span>للإطلاق والانتشار</span></h2>
+      <p class="section-desc animate-in delay-1">استغلال مثالي للوقت والتكنولوجيا لبناء صلة حقيقية بين ألعاب أكوان والأطفال.</p>
+
+      <div class="grid-layout opp-grid animate-in delay-2">
+        <!-- Card 1 -->
+        <div class="card-playful card-purple">
+          <div class="svg-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <h3>موسم الإجازة الصيفية</h3>
+          <p>أوقات مشاهدة الأطفال على المنصات ترتفع لأعلى مستوياتها، وهذا هو التوقيت الذهبي للظهور بمحتوى تفاعلي يجذب اهتمامهم.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-playful card-mint">
+          <div class="svg-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82zM7 7h.01"/></svg>
+          </div>
+          <h3>تسويق غير مباشر وفعال</h3>
+          <p>عندما يشاهد الأطفال اللعبة واقعياً وبشكل ممتع، يولد لديهم رغبة تلقائية في اقتنائها ولعبها، مما يدفع المبيعات بشكل مباشر.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-playful card-gold">
+          <div class="svg-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>ولاء حقيقي للعلامة</h3>
+          <p>المحتوى المرئي والترفيهي يبني ارتباطاً عاطفياً متيناً وموثوقية عالية لدى الأطفال وأولياء أمورهم باسم أكوان.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 3: GAMES ==================== -->
+  <section class="slide slide-3" id="slide-2">
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M9 22V12h6v10"/></svg>
+        الألعاب وتكوين المحتوى
+      </div>
+      
+      <h2 class="section-title animate-in delay-1">ألعاب تكوين <span>تتحول لتحديات حقيقية</span></h2>
+      <p class="section-desc animate-in delay-1">محاكاة بصرية مبدئية لشكل مقاطع الفيديو الحماسية للألعاب الثلاثة الأساسية.</p>
+
+      <div class="grid-layout games-grid animate-in delay-2">
+        <!-- Game 1 -->
+        <div class="card-playful card-purple">
+          <h3>لعبة الذاكرة العملاقة</h3>
+          <p>تحدي حركي يعتمد على السرعة والذاكرة، حيث يتسابق الأطفال للبحث عن بطاقات الحروف العملاقة المطابقة والموزعة على الأرض.</p>
+          <div class="video-mockup" onclick="openLightbox('لعبة الذاكرة العملاقة', 'تصميم البطاقات العملاقة بنفس هوية ورسومات البطاقات الصغيرة الحقيقية للعبة الذاكرة لتسهيل تمييزها وحفظ شكلها بذهن الطفل المشاهد; التحدث عن اللعبة الحقيقية وصندوقها الفعلي للأطفال وعرضه بوضوح في منتصف الحلقة خلال لحظة ذروة الحماس; إبراز متعة وسهولة التحدي الحركي في أكثر من موضع لقطات لخلق رغبة عارمة لدى أي طفل مشاهد لتجربتها بنفسه بالمنزل', 'رؤية حماس الأطفال تولد رغبة فورية للأهالي لتكرار اللعبة بالمنزل; كود خصم حصري لمشاهدة الحلقة يؤدي لطلب اللعبة مباشرة; رابط الشراء للنسخة الورقية في المتجر بالتعليق المثبت والوصف', 'giant_memory_game.png', '01.mp4')">
+            <img src="giant_memory_game.png" alt="لعبة الذاكرة العملاقة">
+            <div class="play-overlay">
+              <div class="play-btn">▶</div>
+            </div>
+            <span class="mockup-label">اضغط للتكبير 🔍</span>
+          </div>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="card-playful card-mint">
+          <h3>تكوين الكلمات والحروف</h3>
+          <p>تحدي تعاوني حماسي يقوم فيه الأطفال بتركيب الكلمات والعبارات العربية باستخدام مجسمات خشبية ضخابة وجذابة جداً بصرياً.</p>
+          <div class="video-mockup" onclick="openLightbox('لعبة تكوين الكلمات والحروف', 'استخدام مجسمات خشبية ملونة وضخمة متطابقة تماماً في أشكالها ورسوماتها مع قطع الحروف الصغيرة المتواجدة باللعبة الحقيقية; شرح وتوضيح طريقة تركيب الحروف على الصندوق الفعلي في منتصف التحدي بواسطة ميسر الألعاب لتأكيد الارتباط بالمنتج; إبراز متعة تركيب الكلمات في عدة زوايا وتبيان اللعبة في أكثر من مكان بالاستوديو لتصبح مغرية جداً ويدفع أي طفل لطلب تجربتها', 'توضيح كيف تساعد اللعبة على ترسيخ الحروف والقراءة للطفل; عرض شحن مجاني خاص بالحلقة لشراء &quot;لعبة الكلمات الخشبية&quot;; زر شراء مباشر وسهل عبر المتجر لرفع نسبة تحويل المبيعات', 'arabic_letter_game.png', '02.mp4')">
+            <img src="arabic_letter_game.png" alt="لعبة تكوين الكلمات">
+            <div class="play-overlay">
+              <div class="play-btn">▶</div>
+            </div>
+            <span class="mockup-label">اضغط للتكبير 🔍</span>
+          </div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="card-playful card-gold">
+          <h3>لعبة التحية والرد</h3>
+          <p>لعبة اجتماعية ممتعة يتنافس فيها الأطفال على إيجاد الردود الاجتماعية الصحيحة والمواقف التفاعلية للفوز بالتحدي الأخير.</p>
+          <div class="video-mockup" onclick="openLightbox('لعبة التحية والرد', 'تكبير بطاقات المواقف والردود الاجتماعية بنفس الرسوم الكرتونية والألوان اللطيفة للبطاقات الورقية الصغيرة الحقيقية لبناء الوعي بالمنتج; إظهار ميسر الألعاب وهو يمسك بالعلبة والبطاقات الصغيرة ويشرحها بوضوح في منتصف الحلقة لالتقاط كامل انتباه الأطفال; تبيان اللعبة في أكثر من موضع بالاستوديو وإبراز ضحكات الأطفال ولعبهم الحركي والاجتماعي لجعلها اللعبة المفضلة التي يتمناها أي طفل', 'تسويق اللعبة كبديل مثالي لقضاء وقت عائلي حميم بعيداً عن الشاشات; عرض حزمة الصيف المتكاملة بخصم خاص عند طلب البطاقات مع ألعاب أخرى; توفير رابط مباشر بنقرة واحدة لزيادة الطلبات الفورية', 'greeting_card_game.png', '03.mp4')">
+            <img src="greeting_card_game.png" alt="لعبة التحية والرد">
+            <div class="play-overlay">
+              <div class="play-btn">▶</div>
+            </div>
+            <span class="mockup-label">اضغط للتكبير 🔍</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 4: TIKTOK & REELS ==================== -->
+  <section class="slide slide-tiktok" id="slide-3">
+    <div class="bg-decor decor-purple" style="opacity:0.12;"></div>
+    <div class="bg-decor decor-mint" style="opacity:0.12;"></div>
+
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.93a8.16 8.16 0 0 0 4.77 1.52V7.01a4.85 4.85 0 0 1-1-.32z"/></svg>
+        محتوى تيك توك و يوتيوب Shorts
+      </div>
+
+      <h2 class="section-title animate-in delay-1">من كل حلقة: <span>3 إلى 5 ريلزات جاهزة للنشر</span></h2>
+      <p class="section-desc animate-in delay-1">كل جلسة تصوير تُنتج تلقائياً محتوى قصيراً للانتشار الفوري — تحديات موجهة تشجع الأطفال على المشاركة.</p>
+
+      <div class="tiktok-challenges-grid animate-in delay-2" style="grid-template-columns: repeat(3, 1fr);">
+
+        <!-- Challenge 1: Letter Balloons + Greeting -->
+        <div class="tiktok-card card-purple">
+          <div class="tiktok-card-header">
+            <div class="tiktok-icon-box" style="--tc: var(--purple);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="tiktok-card-meta">
+              <span class="tiktok-badge" style="background: rgba(108,78,190,0.3); color: var(--purple-light);">تحدي #1</span>
+              <h3>تحدي التحية والبالون الحرف 🎈</h3>
+            </div>
+          </div>
+          <div class="tiktok-card-body">
+            <img src="tiktok_challenge1_balloon.png" alt="تحدي التحية والبالون الحرف" class="zoomable-img" onclick="openImageLightbox('tiktok_challenge1_balloon.png')" style="width:100%; height:100px; object-fit:cover; border-radius:12px; margin-bottom:4px;">
+            <div class="kids-balloon-row">
+              <div class="kid-unit">
+                <div class="letter-balloon-shape" style="--bc: var(--purple-light);">أ</div>
+                <div class="kid-icon">👦</div>
+              </div>
+              <div class="kid-unit">
+                <div class="letter-balloon-shape" style="--bc: var(--mint);">ك</div>
+                <div class="kid-icon">👧</div>
+              </div>
+              <div class="kid-unit">
+                <div class="letter-balloon-shape" style="--bc: var(--gold);">و</div>
+                <div class="kid-icon">👦</div>
+              </div>
+              <div class="kid-unit">
+                <div class="letter-balloon-shape" style="--bc: var(--pink);">ا</div>
+                <div class="kid-icon">👧</div>
+              </div>
+              <div class="kid-unit">
+                <div class="letter-balloon-shape" style="--bc: var(--purple);">ن</div>
+                <div class="kid-icon">👦</div>
+              </div>
+            </div>
+
+            <div class="tiktok-mechanics">
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--purple-light);"></span>
+                <span>لجين تُلقي التحية — إجابة خاطئة = البالونة تنفجر 💦</span>
+              </div>
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--gold);"></span>
+                <span>يُعرض صندوق لعبة التحية والرد عند الذروة</span>
+              </div>
+            </div>
+            <div class="tiktok-viral-tag">⚡ تحدي قابل للمشاركة: #TahiyyaChallenge</div>
+          </div>
+        </div>
+
+        <!-- Challenge 2: Word Game 15s -->
+        <div class="tiktok-card card-gold">
+          <div class="tiktok-card-header">
+            <div class="tiktok-icon-box" style="--tc: var(--gold);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div class="tiktok-card-meta">
+              <span class="tiktok-badge" style="background: rgba(255,184,0,0.2); color: var(--gold);">تحدي #2</span>
+              <h3>لعبة الكلمات السريعة ⏱️</h3>
+            </div>
+          </div>
+          <div class="tiktok-card-body">
+            <img src="tiktok_challenge2_words.png" alt="لعبة الكلمات السريعة" class="zoomable-img" onclick="openImageLightbox('tiktok_challenge2_words.png')" style="width:100%; height:100px; object-fit:cover; border-radius:12px; margin-bottom:4px;">
+            <div class="tiktok-countdown">
+              <div class="countdown-display">15</div>
+              <div class="countdown-label">1... 2... 3... انطلق! 🚀</div>
+            </div>
+            <div class="tiktok-mechanics">
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--gold);"></span>
+                <span>15 ثانية لتكوين كلمة من الحروف</span>
+              </div>
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--mint);"></span>
+                <span>الفائز يحصل على هدية أمام الكاميرا 🎁</span>
+              </div>
+            </div>
+            <div class="tiktok-viral-tag">⚡ تحدي قابل للمشاركة: #15SecWordChallenge</div>
+          </div>
+        </div>
+
+        <!-- Challenge 3: Memory Game 15s -->
+        <div class="tiktok-card card-pink">
+          <div class="tiktok-card-header">
+            <div class="tiktok-icon-box" style="--tc: var(--pink);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M9 22V12h6v10"/></svg>
+            </div>
+            <div class="tiktok-card-meta">
+              <span class="tiktok-badge" style="background: rgba(255,51,102,0.2); color: var(--pink-light);">تحدي #3</span>
+              <h3>تحدي الذاكرة الخاطفة 🧠</h3>
+            </div>
+          </div>
+          <div class="tiktok-card-body">
+            <img src="tiktok_challenge3_memory.png" alt="تحدي الذاكرة" class="zoomable-img" onclick="openImageLightbox('tiktok_challenge3_memory.png')" style="width:100%; height:100px; object-fit:cover; border-radius:12px; margin-bottom:4px;">
+            <div class="tiktok-mechanics">
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--pink-light);"></span>
+                <span>شاهد البطاقات لمدة 15 ثانية ثم تُغطى</span>
+              </div>
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--pink-light);"></span>
+                <span>مؤقت حي على الشاشة يزيد توتر المشاهد</span>
+              </div>
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--pink-light);"></span>
+                <span>ردود فعل الأطفال العفوية = محتوى فيروسي</span>
+              </div>
+              <div class="mechanic-item">
+                <span class="mechanic-dot" style="background:var(--gold);"></span>
+                <span>البطاقات العملاقة نفس تصميم لعبة الذاكرة الأصلية</span>
+              </div>
+            </div>
+            <div class="tiktok-viral-tag">⚡ تحدي قابل للمشاركة: #MemoryChallenge</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 5 (was 4): SERVICES ==================== -->
+  <section class="slide slide-4" id="slide-4">
+    <div class="bg-decor decor-mint" style="opacity:0.1;"></div>
+    <div class="bg-decor decor-gold" style="opacity:0.1;"></div>
+
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        نطاق خدماتي
+      </div>
+      
+      <h2 class="section-title animate-in delay-1">خدمة كاملة <span>من التخطيط حتى النشر</span></h2>
+      <p class="section-desc animate-in delay-1">أتولى كافة التفاصيل والعمليات لضمان خروج المحتوى بأعلى مستوى من الجودة والانتشار.</p>
+
+      <div class="services-layout animate-in delay-2">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div class="svg-box" style="--card-accent: var(--purple); --svg-bg: rgba(108,78,190,0.15);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h4>السيناريو والسكريبت</h4>
+          <p>تطوير أفكار مشوقة وسيناريوهات كاملة تناسب الأطفال وتبرز رسالة أكوان.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div class="svg-box" style="--card-accent: var(--mint); --svg-bg: rgba(46,196,182,0.15);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h4>الإشراف على التصوير</h4>
+          <p>إعداد فني وتنسيق للموقع وزوايا الكاميرا للحفاظ على الهوية البصرية الجذابة.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <div class="svg-box" style="--card-accent: var(--gold); --svg-bg: rgba(255,184,0,0.15);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <h4>المونتاج والتحرير</h4>
+          <p>مونتاج تفاعلي وسريع مع مؤثرات صوتية وبصرية جذابة تحافظ على انتباه الطفل.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+          <div class="svg-box" style="--card-accent: var(--pink); --svg-bg: rgba(255,51,102,0.15);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.2 8.4c.5.38.8.97.8 1.6v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z"/><polyline points="22 10 12 17 2 10"/></svg>
+          </div>
+          <h4>النشر والتحليل</h4>
+          <p>إدارة النشر على يوتيوب وتيك توك مع استراتيجيات تحسين محركات البحث (SEO).</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card">
+          <div class="svg-box" style="--card-accent: var(--purple-light); --svg-bg: rgba(155,127,232,0.15);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h4>الاستشارات والتقنية</h4>
+          <p>توظيف خبراتي البرمجية والتسويقية لتطوير متجركم وحلول الويب وتكاملها الرقمي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 6: PRODUCTION & ART DIRECTION ==================== -->
+  <section class="slide slide-5" id="slide-5">
+    <div class="bg-decor decor-purple" style="opacity: 0.12;"></div>
+    <div class="bg-decor decor-gold" style="opacity: 0.12;"></div>
+
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        خطة التنفيذ والإنتاج
+      </div>
+      
+      <h2 class="section-title animate-in delay-1">خطة الإنتاج <span>والإخراج الفني للتحديات</span></h2>
+      <p class="section-desc animate-in delay-1">التفاصيل العملية والعتاد لضمان ظهور مقاطع الفيديو بأعلى جودة احترافية تجذب الأطفال وتثق بها العائلات.</p>
+
+      <!-- Sub-tabs navigation -->
+      <div class="prod-tabs animate-in delay-2">
+        <button class="prod-tab active" onclick="switchProdTab('gear')">العتاد والأسلوب البصري</button>
+        <button class="prod-tab" onclick="switchProdTab('studio')">الاستوديو والديكور</button>
+        <button class="prod-tab" onclick="switchProdTab('kids')">الأطفال وتفاعلهم</button>
+        <button class="prod-tab" onclick="switchProdTab('edit')">المونتاج وجدول النشر</button>
+      </div>
+
+      <!-- Tab content container -->
+      <div class="prod-content-container animate-in delay-3">
+
+        <!-- Tab 1: Gear -->
+        <div class="prod-content-pane active" id="pane-gear">
+          <div class="prod-details-col">
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M15.6 11.6L22 7v10l-6.4-4.6z"/><rect x="2" y="5" width="14" height="14" rx="2"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>تصوير ذكي (كاميرا أو هاتفين آيفون)</h4>
+                <p>نعتمد على كاميرا واحدة أو هاتفين آيفون (iPhone). بفضل تقنيات التصوير وتصحيح الألوان الحديثة، يمكننا استخراج جودة سينمائية مبهرة كالأفلام تماماً وبدون أي ميزانيات تأسيسية مكلفة.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 19v4M8 23h8"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>التركيز الأساسي: الإضاءة ونقاء الصوت</h4>
+                <p>السر الحقيقي لجودة السينما هو **توزيع الإضاءة الناعمة** ونقاء **تسجيل الصوت**. سنركز الاستثمار بالكامل عليهما لضمان ظهور المنتجات وتفاعلات الأطفال بأبهى صورة.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>فلسفة الاستثمار: أقصى تقليص للتكاليف</h4>
+                <p>نلتزم ببدء العمل بأقل تكلفة ممكنة؛ فلا نفضل الاستثمار الضخم في أي مشروع قبل التحقق من مردوده ونتائجه العملية. نبدأ بذكاء ونرتقي تدريجياً مع نمو المشروع.</p>
+              </div>
+            </div>
+          </div>
+          <div class="prod-summary-col" style="--mint: var(--purple);">
+            <div class="svg-box" style="--card-accent: var(--purple); --svg-bg: rgba(108,78,190,0.15); width:56px; height:56px; margin-bottom:12px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+            <h3 class="prod-summary-title">استثمار عقلاني مرن</h3>
+            <p class="prod-summary-desc">نركز الموارد فقط على ما يصنع فرقاً حقيقياً في الجودة (الصوت والإضاءة)، ونخفض تكاليف الأجهزة والكاميرات لأقصى حد لضمان أسرع مردود وربحية.</p>
+          </div>
+        </div>
+
+        <div class="prod-content-pane" id="pane-studio">
+          <div class="prod-details-col">
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>تصميم الاستوديو بهوية تكوين</h4>
+                <p>إعداد ركن ألعاب مخصص للأطفال، مجهز بخلفيات ملونة تبرز الهوية البصرية لعلامتكم (البنفسجي، الأخضر النعناعي، والأصفر الذهبي).</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>بيئة لعب آمنة ومريحة</h4>
+                <p>أرضيات مبطنة وسجاد دافئ بألوان مبهجة يتيح للأطفال الركض، اللعب، والجلوس على الأرض بأمان وأريحية كاملين أثناء تصوير التحديات الحركية.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>التسويق غير المباشر بذكاء</h4>
+                <p>تصميم رفوف خشبية دافئة تعرض ألعاب ومنتجات أكوان الحالية في خلفية التصوير بطريقة جمالية وجذابة تزيد رغبة الأطفال التلقائية بالامتلاك.</p>
+              </div>
+            </div>
+          </div>
+          <div class="prod-summary-col" style="--mint: var(--mint);">
+            <div class="svg-box" style="--card-accent: var(--mint); --svg-bg: rgba(46,196,182,0.15); width:56px; height:56px; margin-bottom:12px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+            </div>
+            <h3 class="prod-summary-title">مساحة اللعب والبهجة</h3>
+            <p class="prod-summary-desc">استوديو دافئ، مبطن بالكامل للسلامة والراحة، مصمم بألوان البراند الخاصة بكم ليكون بمثابة الهوية الإعلانية غير المباشرة لكل فيديو.</p>
+          </div>
+        </div>
+
+        <!-- Tab 3: Kids -->
+        <div class="prod-content-pane" id="pane-kids">
+          <div class="prod-details-col">
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>العدد المثالي: 3 إلى 4 أطفال</h4>
+                <p>هذا العدد يوفر تفاعلاً حركياً رائعاً، حماساً للمنافسة، ويسهل التحكم به وتوثيقه عفوياً دون شعورهم بالضغط أو رهبة الكاميرا.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>الفئة العمرية (5-9 سنوات)</h4>
+                <p>الفئة الذهبية القادرة على فهم قوانين ألعاب أكوان والتحدي، وتتميز بالجرأة والعفوية التامة في إبداء مشاعر الفرح والتعبير اللفظي والحركي.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>موجه وميسر الألعاب (Game Master)</h4>
+                <p>وجود ميسر ألعاب مرح وحنون خلف الكاميرا، وظيفته اللعب مع الأطفال وتحفيزهم بأسلوب تفاعلي مليء بالتشويق، بدلاً من التوجيه التقليدي المربك.</p>
+              </div>
+            </div>
+          </div>
+          <div class="prod-summary-col" style="--mint: var(--gold);">
+            <div class="svg-box" style="--card-accent: var(--gold); --svg-bg: rgba(255,184,0,0.15); width:56px; height:56px; margin-bottom:12px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="prod-summary-title">إطلاق فيروسي قوي</h3>
+            <p class="prod-summary-desc">نستضيف أطفال مؤثرين وعائلاتهم في أول حلقة لضمان قاعدة جماهيرية وتفاعل فوري يضمن انتشاراً قوياً ومبيعات لمنتجاتكم.</p>
+          </div>
+        </div>
+
+        <!-- Tab 4: Edit -->
+        <div class="prod-content-pane" id="pane-edit">
+          <div class="prod-details-col">
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>المونتاج الحركي السريع (Dynamic Pacing)</h4>
+                <p>قص لقطات التردد والمقاطع الميتة، والتركيز بالكامل على الحركة والسرعة والضحك لشد انتباه الأطفال والعائلات من الثانية الأولى للفيديو.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>تأثيرات بصرية وصوتية طفولية</h4>
+                <p>إدراج نصوص كرتونية ملونة على الشاشة لتوضيح النقاط، مؤقتات حركية مشوقة، ومؤثرات صوتية مضحكة تعزز الكوميديا والإثارة الطبيعية.</p>
+              </div>
+            </div>
+            <div class="prod-detail-item">
+              <div class="prod-detail-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+              <div class="prod-detail-text">
+                <h4>النشر المتكامل والاستفادة القصوى</h4>
+                <p>إنتاج 2 إلى 4 مقاطع يوتيوب كاملة شهرياً، مع استخلاص 10 إلى 15 مقطعاً قصيراً (Shorts / Reels / TikToks) من تفاعلات الأطفال لنشر يومي يزيد الانتشار والنمو المباشر للمتجر.</p>
+              </div>
+            </div>
+          </div>
+          <div class="prod-summary-col" style="--mint: var(--pink);">
+            <div class="svg-box" style="--card-accent: var(--pink); --svg-bg: rgba(255,51,102,0.15); width:56px; height:56px; margin-bottom:12px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </div>
+            <h3 class="prod-summary-title">إدارة رقمية متكاملة</h3>
+            <p class="prod-summary-desc">ألوان زاهية ومشرقة تزيد نسبة النقر (CTR)، مع تطبيق استراتيجيات الـ SEO وصور مصغرة مخصصة تجذب الأطفال فوراً.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 7: COLLABORATION MODEL ==================== -->
+  <section class="slide slide-6" id="slide-6">
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        رؤية التعاون المشترك
+      </div>
+      
+      <h2 class="section-title animate-in delay-1">كيف نعمل معاً؟ <span>شراكة مستدامة ومريحة للجميع</span></h2>
+      <p class="section-desc animate-in delay-1">اليوتيوب مشروع طويل الأمد، وعقد العمل هو أفضل وأسهل طريقة لنشتغل مع بعض باستمرار وتنسيق دائم كصديق وشريك تقني متكامل للفريق.</p>
+
+      <div class="pricing-grid animate-in delay-2" style="max-width: 900px; grid-template-columns: 1.2fr 0.8fr;">
+        <!-- Why Employment Contract Card -->
+        <div class="price-card featured" style="border-color: var(--mint); background: linear-gradient(135deg, rgba(11,5,30,0.4), rgba(46,196,182,0.08));">
+          <div class="badge-featured" style="background: var(--mint); color: var(--bg-dark);">الرؤية والالتزام</div>
+          <div class="plan-name" style="color: var(--mint-light);">لماذا عقد العمل هو الحل الأنسب لنا؟</div>
+          <ul class="price-features" style="gap: 16px; margin-top: 20px;">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="stroke: var(--mint); width:16px; height:16px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div style="font-size: 13.5px; line-height: 1.5; color: rgba(255,255,255,0.9);">
+                <strong>مشروع طويل المدى:</strong> اليوتيوب يحتاج استدامة وتخطيط مستمر لنحقق نتائج ملموسة.
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="stroke: var(--mint); width:16px; height:16px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div style="font-size: 13.5px; line-height: 1.5; color: rgba(255,255,255,0.9);">
+                <strong>التواجد معكم دائماً:</strong> أكون جاهزاً ومعكم في أي وقت للتصوير، التنسيق، ومتابعة القناة وسير العمل.
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="stroke: var(--mint); width:16px; height:16px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div style="font-size: 13.5px; line-height: 1.5; color: rgba(255,255,255,0.9);">
+                <strong>إشراف متكامل ودعم فني:</strong> إدارة كاملة للمحتوى والتسويق الرقمي، بجانب الدعم والحلول البرمجية لمتجر أكوان.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Friendly Collaboration Card -->
+        <div class="price-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02); text-align: center; align-items: center; padding: 36px 24px;">
+          <div class="svg-box" style="--card-accent: var(--gold); --svg-bg: rgba(255,184,0,0.15); margin-bottom: 20px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="plan-title" style="font-size: 20px; margin-bottom: 12px; color: var(--gold-light);">الميزانية والراتب</div>
+          <p style="font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 0;">
+            لأننا أصدقاء وشركاء نجاح، الميزانية والراتب نحددها معاً بكل مرونة وسهولة بما يناسبنا جميعاً. كل شيء بسيط وقابل للتوافق والبدء فوراً.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE 9: CTA & CONTACT ==================== -->
+  <section class="slide slide-8" id="slide-7">
+    <div class="bg-decor decor-purple" style="opacity:0.25;"></div>
+    <div class="bg-decor decor-gold" style="opacity:0.25;"></div>
+
+    <div class="slide-content">
+      <div class="section-tag animate-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        خطوتنا الأولى معاً
+      </div>
+      
+      <h2 class="section-title animate-in delay-1">هيا نبدأ <span>تحويل ألعاب أكوان إلى محتوى طفولي مبتكر</span></h2>
+      <p class="section-desc animate-in delay-2" style="font-size: 16px; font-weight: 500; max-width: 800px; margin: 0 auto 24px; line-height: 1.8;">
+        لقد دخل شهر جوان (يونيو) بالفعل، والأطفال متفرغون تماماً في إجازاتهم الصيفية! دعونا لا نعقد الأمور أو نضيع الوقت، فأنا أثق 1000% في إخراج تحفة فنية إبداعية تليق بأكوان. دعنا ننتقل مباشرة للواتساب ونبدأ العمل الفعلي دون أي تأخير!
+      </p>
+
+      <div class="btn-row animate-in delay-3" style="justify-content: center;">
+        <a id="cta-whatsapp-link" href="https://wa.me/213560688510" target="_blank" class="btn-primary" style="margin: 0 auto;">
+          <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          تواصل الآن عبر واتساب
+        </a>
+        <a id="cta-email-link" href="mailto:siraj@example.com" class="btn-secondary" style="display: none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          إرسال بريد إلكتروني
+        </a>
+      </div>
+
+      <div class="contact-info-row animate-in delay-4">
+        <div class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span id="contact-phone-text">واتساب: +213 560688510</span>
+        </div>
+        <div class="contact-pill" style="display: none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span id="contact-email-text">siraj@example.com</span>
+        </div>
+        <div class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>دعونا لا نعقد الأمور ونبدأ الآن 🚀</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+  // ===== SLIDER SCROLL SNAP CONTROLLER =====
+  const wrapper = document.getElementById('sliderWrapper');
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const progressBar = document.getElementById('progressBar');
+
+  // Smooth navigation click
+  function scrollToSlide(index) {
+    const slide = document.getElementById('slide-' + index);
+    if (slide) {
+      slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  }
+
+  // Intersection Observer to detect active slide and update navigation dots & progress
+  const observerOptions = {
+    root: wrapper,
+    threshold: 0.5
+  };
+
+  const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const slideId = entry.target.id;
+        const index = parseInt(slideId.replace('slide-', ''));
+        
+        // Update dots classes
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[index]) dots[index].classList.add('active');
+
+        // Update progress bar width
+        const progress = (index / (dots.length - 1)) * 100;
+        progressBar.style.width = progress + '%';
+
+        // Trigger slide animation inwards
+        entry.target.querySelectorAll('.animate-in').forEach(el => {
+          el.classList.add('visible');
+        });
+      }
+    });
+  }, observerOptions);
+
+  slides.forEach(slide => slideObserver.observe(slide));
+
+  // ===== KEYBOARD ARROW CONTROLS (RTL COMPATIBLE) =====
+  document.addEventListener('keydown', (e) => {
+    const activeDot = document.querySelector('.nav-dot.active');
+    if (!activeDot) return;
+    const currentIndex = Array.from(dots).indexOf(activeDot);
+    
+    // In RTL, ArrowLeft scrolls forward, ArrowRight scrolls backward
+    if (e.key === 'ArrowLeft' || e.key === 'PageDown') {
+      e.preventDefault();
+      if (currentIndex < dots.length - 1) scrollToSlide(currentIndex + 1);
+    }
+    if (e.key === 'ArrowRight' || e.key === 'PageUp') {
+      e.preventDefault();
+      if (currentIndex > 0) scrollToSlide(currentIndex - 1);
+    }
+  });
+
+  // ===== LIGHTBOX POPUP CONTROLLER =====
+  let currentVideoSrc = '';
+
+  function openLightbox(title, ideasStr, salesStr, imgSrc, videoSrc) {
+    const modal = document.getElementById('lightbox-modal');
+    document.getElementById('lightbox-title').innerText = title;
+    
+    // Reset element states
+    const imgEl = document.getElementById('lightbox-img');
+    imgEl.src = imgSrc;
+    imgEl.style.display = 'block';
+    
+    const videoEl = document.getElementById('lightbox-video');
+    videoEl.style.display = 'none';
+    videoEl.pause();
+    videoEl.src = '';
+    
+    // Set video src: use explicit videoSrc if provided, otherwise fallback
+    currentVideoSrc = videoSrc || imgSrc.replace('.png', '.mp4');
+    
+    // Show the play button
+    const playBtn = document.getElementById('lightbox-play-btn');
+    playBtn.style.display = 'flex';
+    
+    // Clear and populate ideas list
+    const ideasList = document.getElementById('lightbox-ideas-list');
+    ideasList.innerHTML = '';
+    ideasStr.split(';').forEach(idea => {
+      if (idea.trim()) {
+        const li = document.createElement('li');
+        li.innerText = idea.trim();
+        ideasList.appendChild(li);
+      }
+    });
+
+    // Clear and populate sales list
+    const salesList = document.getElementById('lightbox-sales-list');
+    salesList.innerHTML = '';
+    salesStr.split(';').forEach(sale => {
+      if (sale.trim()) {
+        const li = document.createElement('li');
+        li.className = 'sales-bullet';
+        li.innerText = sale.trim();
+        salesList.appendChild(li);
+      }
+    });
+
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('open'), 10);
+  }
+
+  function openImageLightbox(imgSrc) {
+    const modal = document.getElementById('lightbox-modal');
+    modal.classList.add('image-only');
+    
+    // Reset element states
+    const imgEl = document.getElementById('lightbox-img');
+    imgEl.src = imgSrc;
+    imgEl.style.display = 'block';
+    
+    const videoEl = document.getElementById('lightbox-video');
+    videoEl.style.display = 'none';
+    videoEl.pause();
+    videoEl.src = '';
+    
+    currentVideoSrc = '';
+    
+    // Hide the play button
+    const playBtn = document.getElementById('lightbox-play-btn');
+    playBtn.style.display = 'none';
+    
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('open'), 10);
+  }
+
+  function playLightboxVideo() {
+    const imgEl = document.getElementById('lightbox-img');
+    const videoEl = document.getElementById('lightbox-video');
+    const playBtn = document.getElementById('lightbox-play-btn');
+    
+    if (currentVideoSrc) {
+      imgEl.style.display = 'none';
+      playBtn.style.display = 'none';
+      
+      videoEl.src = currentVideoSrc;
+      videoEl.style.display = 'block';
+      videoEl.play().catch(err => {
+        console.log("Auto-play blocked or video load error: ", err);
+      });
+    }
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    modal.classList.remove('open');
+    
+    const videoEl = document.getElementById('lightbox-video');
+    videoEl.pause();
+    videoEl.src = '';
+    
+    setTimeout(() => {
+      modal.style.display = 'none';
+      modal.classList.remove('image-only');
+    }, 400);
+  }
+
+  function closeLightboxOnBg(event) {
+    if (event.target.id === 'lightbox-modal') {
+      closeLightbox();
+    }
+  }
+
+  // ===== PRODUCTION SUB-TABS CONTROLLER =====
+  function switchProdTab(tabId) {
+    // Remove active class from all tabs
+    document.querySelectorAll('.prod-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    // Remove active class from all panes
+    document.querySelectorAll('.prod-content-pane').forEach(pane => {
+      pane.classList.remove('active');
+    });
+    
+    // Add active class to selected tab and pane
+    const activeTab = document.querySelector(`.prod-tab[onclick="switchProdTab('${tabId}')"]`);
+    if (activeTab) activeTab.classList.add('active');
+    
+    const activePane = document.getElementById(`pane-${tabId}`);
+    if (activePane) activePane.classList.add('active');
+  }
+
+  // ===== CUSTOMIZER DASHBOARD CONTROLLER =====
+  function toggleCustomizer() {
+    const panel = document.getElementById('customizer-panel');
+    panel.classList.toggle('open');
+  }
+
+  const defaults = {
+    name: 'سراج',
+    wa: '+213 560688510',
+    email: 'siraj@example.com'
+  };
+
+  function loadCustomizer() {
+    const name = localStorage.getItem('akwan_name') || defaults.name;
+    const wa = localStorage.getItem('akwan_wa') || defaults.wa;
+    const email = localStorage.getItem('akwan_email') || defaults.email;
+
+    document.getElementById('input-name').value = name;
+    document.getElementById('input-wa').value = wa;
+    document.getElementById('input-email').value = email;
+
+    applyCustomizerValues(name, wa, email);
+  }
+
+  function applyCustomizerValues(name, wa, email) {
+    const cleanWa = wa.replace(/[\s\+]/g, '');
+    const waLink = document.getElementById('cta-whatsapp-link');
+    if (waLink) waLink.href = 'https://wa.me/' + cleanWa;
+    
+    const emailLink = document.getElementById('cta-email-link');
+    if (emailLink) emailLink.href = 'mailto:' + email;
+
+    const phoneText = document.getElementById('contact-phone-text');
+    if (phoneText) phoneText.innerText = 'واتساب: ' + wa;
+    
+    const emailText = document.getElementById('contact-email-text');
+    if (emailText) emailText.innerText = email;
+  }
+
+  function saveCustomizer() {
+    const name = document.getElementById('input-name').value;
+    const wa = document.getElementById('input-wa').value;
+    const email = document.getElementById('input-email').value;
+
+    localStorage.setItem('akwan_name', name);
+    localStorage.setItem('akwan_wa', wa);
+    localStorage.setItem('akwan_email', email);
+
+    applyCustomizerValues(name, wa, email);
+    
+    const saveBtn = document.querySelector('.btn-save');
+    const originalText = saveBtn.innerText;
+    saveBtn.innerText = '✅ تم الحفظ والتحديث!';
+    saveBtn.style.background = 'linear-gradient(135deg, #2EC4B6, #A7F3D0)';
+    setTimeout(() => {
+      saveBtn.innerText = originalText;
+      saveBtn.style.background = '';
+      toggleCustomizer();
+    }, 1200);
+  }
+
+  function exportToPDF() {
+    document.getElementById('customizer-panel').classList.remove('open');
+    setTimeout(() => {
+      window.print();
+    }, 300);
+  }
+
+  window.addEventListener('DOMContentLoaded', loadCustomizer);
+</script>
+</body>
+</html>
