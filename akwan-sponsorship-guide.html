@@ -204,6 +204,34 @@
   .prob-high { background: #E6F4EA; color: #137333; }
   .prob-med { background: #FEF7E0; color: #B06000; }
 
+  /* Arabic Page Specific Styles (Enlarge & pad to fill page beautifully) */
+  .a4-page[dir="rtl"] .summary-list li {
+    font-size: 12.2px;
+    line-height: 1.48;
+    margin-bottom: 6px;
+  }
+
+  .a4-page[dir="rtl"] .detail-line {
+    font-size: 12.2px;
+    line-height: 1.48;
+    margin-bottom: 6px;
+  }
+
+  .a4-page[dir="rtl"] .summary-block h3 {
+    font-size: 14.5px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+
+  .a4-page[dir="rtl"] .summary-block {
+    padding: 16px 18px;
+  }
+
+  .a4-page[dir="rtl"] .summary-grid {
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
   @media print {
     body {
       background: none !important;
@@ -220,7 +248,7 @@
 </head>
 <body>
 
-  <!-- ==================== PAGE 1: STRATEGY & TOP SPONSORS ==================== -->
+  <!-- ==================== PAGE 1: STRATEGY & ALL 6 CATEGORIES ==================== -->
   <div class="a4-page" dir="rtl">
     <div class="header">
       <div class="title-area">
@@ -235,9 +263,9 @@
 
     <div class="summary-grid">
       <!-- Strategy Block (Full Width) -->
-      <div class="summary-block full-width-block" style="padding: 10px 14px;">
+      <div class="summary-block full-width-block">
         <h3>💡 ملخص استراتيجية الرعاية والتمويل</h3>
-        <div class="summary-content" style="gap: 4px;">
+        <div class="summary-content">
           <div class="detail-line">🔹 <strong>الهدف التشغيلي:</strong> تحديد شركاء تسويقيين في الرياض لتغطية نفقات الإنتاج والجوائز، مع تقديم نماذج دمج غير مزعجة للمشاهدين.</div>
           <div class="detail-line">🔹 <strong>القيمة المقترحة للرعاة:</strong> وصول مباشر لجمهور العائلات وأطفالهم بالرياض عبر فيديوهات تفاعلية ذات انتشار فيروسي صيفاً.</div>
         </div>
@@ -252,7 +280,7 @@
             <span class="brand-logo brnd-cheeky">شيكي مونكي</span>
             <span class="brand-logo brnd-sparkys">سباركيز</span>
           </div>
-          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> تصوير حلقة التحديات كاملة في فرع الراعي بالرياض كاستوديو مفتوح وجاهز مجاناً.</div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> تصوير التحديات داخل فضاء الراعي بالرياض كاستوديو مفتوح ومجهز مجاناً.</div>
           <div class="detail-line">🔹 <strong>العائد للراعي:</strong> جذب فوري للعائلات لزيارة الفروع خلال الإجازة الصيفية بالرياض.</div>
         </div>
       </div>
@@ -266,8 +294,8 @@
             <span class="brand-logo brnd-hunger">هنقرستيشن</span>
             <span class="brand-logo brnd-herfy">هرفي | Herfy</span>
           </div>
-          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> قيام ميسر الألعاب بطلب الوجبات للأطفال عبر التطبيق الراعي وتناولها وقت استراحة الحلقة.</div>
-          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> ربط خدماتهم بالمرح والطلب السريع للعائلات أثناء فترات المشاهدة المنزلية.</div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> طلب وجبات الأطفال عبر التطبيق الراعي وتناولها مباشرة في استراحة الحلقة.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> ربط خدماتهم بالمرح والطلب السريع للعائلات أثناء فترات المشاهدة.</div>
         </div>
       </div>
 
@@ -281,7 +309,7 @@
             <span class="brand-logo brnd-mrsool">مرسول | Mrsool</span>
           </div>
           <div class="detail-line">🔹 <strong>آلية الدمج:</strong> تحدي نهائي للفوز بصندوق مثلجات باردة وتوصيلها فوراً كعنصر حماسي صيفي.</div>
-          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> الترويج الفعال لمنتجات المثلجات الصيفية للطلب المباشر في حرارة الرياض العالية.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> الترويج الفعال للمثلجات للطلب المباشر في حرارة الرياض العالية.</div>
         </div>
       </div>
 
@@ -294,33 +322,11 @@
             <span class="brand-logo brnd-redtag">ردتاغ | RedTag</span>
             <span class="brand-logo brnd-mothercare">Mothercare</span>
           </div>
-          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> توفير الملابس الرياضية واليومية الملونة التي يرتديها الأطفال الأربعة وميسر الألعاب طوال الحلقة.</div>
-          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> حضور بصرى مستمر طوال الفيديو يبرز حيوية وجودة الملابس على أطفال حقيقيين.</div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> توفير الملابس الرياضية واليومية الملونة التي يرتديها الأطفال وميسر الألعاب طوال الحلقة.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> حضور بصرى مستمر طوال الفيديو يبرز حيوية وجودة الملابس على الأطفال.</div>
         </div>
       </div>
-    </div>
 
-    <div class="footer">
-      <span>خطة الرعايات والتمويل المشترك - ألعاب أكوان التعليمية</span>
-      <span>صفحة 1 من 2</span>
-      <span>مقدّم من: سراج</span>
-    </div>
-  </div>
-
-  <!-- ==================== PAGE 2: EDUCATION, TECH & INTEGRATION METHODOLOGY ==================== -->
-  <div class="a4-page" dir="rtl">
-    <div class="header">
-      <div class="title-area">
-        <h1>خطة الرعاية والتمويل المشترك | ألعاب أكوان</h1>
-        <p>دليل تسويقي داخلي لتمويل الحلقات وتخفيض التكاليف بالرياض (المملكة العربية السعودية)</p>
-      </div>
-      <div class="logo-area">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
-        أكوان AL ARAB
-      </div>
-    </div>
-
-    <div class="summary-grid">
       <!-- Category 5: Education & Quran Academies -->
       <div class="summary-block">
         <h3>🕌 5. التعليم الصيفي وحلقات القرآن <span class="prob-badge prob-med">قبول متوسط</span></h3>
@@ -330,8 +336,8 @@
             <span class="brand-logo brnd-mknon">جمعية مكنون</span>
             <span class="brand-logo brnd-extra">أكاديمية الفيصل</span>
           </div>
-          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> مسابقة لغوية حول تركيب الآيات أو الكلمات القرآنية ورعاية المركز الصيفي لتكلفة إنتاج تلك المسابقة.</div>
-          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> استهداف مباشر لأولياء الأمور الباحثين عن برامج تربوية هادفة لأبنائهم بالرياض.</div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> رعاية تحديات تكوين الكلمات والقرآن، والترويج للتسجيل بالأنشطة الصيفية.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> استهدف مباشر لأولياء الأمور المهتمين بالتعليم والتربية بالرياض.</div>
         </div>
       </div>
 
@@ -344,11 +350,33 @@
             <span class="brand-logo brnd-extra">إكسترا</span>
             <span class="brand-logo brnd-jahez">نون أكاديمي</span>
           </div>
-          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> استخدام أجهزة التابلت لحساب نقاط التحديات حياً، وتقديم لابتوب ألعاب/دراسي كجائزة كبرى للموسم.</div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> استخدام الأجهزة اللوحية لحساب النقاط، وتقديم لابتوب دراسي كجائزة نهائية كبرى.</div>
           <div class="detail-line">🔹 <strong>العائد للراعي:</strong> رفع المبيعات على الأجهزة والقرطاسية الموجهة للتعليم والترفيه العائلي بالرياض.</div>
         </div>
       </div>
+    </div>
 
+    <div class="footer">
+      <span>خطة الرعايات والتمويل المشترك - ألعاب أكوان التعليمية</span>
+      <span>صفحة 1 من 2</span>
+      <span>مقدّم من: سراج</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2: METHODOLOGY & FINANCIAL ROI ==================== -->
+  <div class="a4-page" dir="rtl">
+    <div class="header">
+      <div class="title-area">
+        <h1>خطة الرعاية والتمويل المشترك | ألعاب أكوان</h1>
+        <p>منهجية الدمج الذكي والتحرك المباشر مع الرعاة في الرياض</p>
+      </div>
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
+        أكوان AL ARAB
+      </div>
+    </div>
+
+    <div class="summary-grid">
       <!-- Block 7: Operational Integration Strategy (Full Width) -->
       <div class="summary-block full-width-block">
         <h3>🛠️ أساليب دمج وتفعيل الرعايات في الحلقات</h3>
@@ -364,9 +392,24 @@
         </div>
       </div>
 
+      <!-- Block 9: Financial Feasibility & ROI (Full Width) -->
+      <div class="summary-block full-width-block">
+        <h3>📊 نموذج الجدوى المالية وتقدير العوائد</h3>
+        <div class="summary-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <div class="detail-line">🔹 <strong>تكلفة إنتاج صفرية لموقع التصوير:</strong> بفضل الاستضافة والرعاية التبادلية مع صالات الألعاب الحركية بالرياض، نوفر 100% من تكاليف الاستوديو والديكور.</div>
+            <div class="detail-line">🔹 <strong>تغطية النفقات التشغيلية:</strong> تضمن الرعايات النقدية المباشرة (مثل جاهز وجرير) تمويل تكلفة المونتاج والمعدات بالكامل وتحقيق أرباح متبادلة.</div>
+          </div>
+          <div>
+            <div class="detail-line">🔹 <strong>رفع مبيعات متجر أكوان:</strong> استخدام أكواد الخصم وشاشات العرض الذكية داخل الحلقات يضمن تحويل المشاهدات إلى مبيعات فورية لمنتجاتنا.</div>
+            <div class="detail-line">🔹 <strong>التحول الرقمي المستقبلي:</strong> العوائد المحققة تساهم مباشرة في تمويل بناء تطبيقات وألعاب أكوان الرقمية للهواتف الذكية تدريجياً.</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Block 8: Actionable Next Steps (Full Width) -->
       <div class="summary-block full-width-block">
-        <h3>🚀 خطوات التحرك الفوري لفريق "أكوان"</h3>
+        <h3>🚀 خطوات التحرك الفوري لفريق "أكوان" للتواصل</h3>
         <div class="summary-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div>
             <div class="detail-line">🔹 <strong>إعداد العرض التسويقي (Pitch Deck):</strong> دمج أرقام القناة الحالية وتفاصيل التحديات الثلاث ورعاياتها المقترحة بملف بصري أنيق ومختصر.</div>
