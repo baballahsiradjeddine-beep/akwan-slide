@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خطة الرعايات والتمويل المشترك | ألعاب أكوان</title>
+<title>دليل الرعاية والتمويل المشترك | ألعاب أكوان</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%236C4EBE%22/><circle cx=%2250%22 cy=%2250%22 r=%2235%22 fill=%22none%22 stroke=%22%23FFB800%22 stroke-width=%226%22 stroke-dasharray=%22150 40%22 transform=%22rotate(-30 50 50)%22/><text x=%2250%%22 y=%2268%%22 font-size=%2252%22 font-weight=%22900%22 fill=%22%23FFFFFF%22 font-family=%22sans-serif%22 text-anchor=%22middle%22>A</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -95,73 +95,85 @@
   .summary-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 12px;
   }
 
   .summary-block {
     background: var(--gray-bg);
     border: 1px solid var(--gray-border);
     border-radius: 12px;
-    padding: 10px 12px;
-  }
-
-  .a4-page[dir="rtl"] .summary-block {
     padding: 12px 14px;
-  }
-
-  .a4-page[dir="rtl"] .summary-grid {
-    gap: 12px;
-    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .summary-block h3 {
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 800;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: var(--navy);
     border-bottom: 1px solid var(--gray-border);
-    padding-bottom: 3px;
+    padding-bottom: 4px;
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  .a4-page[dir="rtl"] .summary-block h3 {
-    font-size: 13.5px;
-    margin-bottom: 8px;
-    padding-bottom: 4px;
+  .summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
   }
 
-  .summary-list {
-    list-style: none;
+  /* Brand Logos / Badges styling */
+  .brands-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 6px;
+    align-items: center;
   }
 
-  .a4-page[dir="rtl"] .summary-list {
-    padding-right: 0;
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #FFFFFF;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
 
-  .summary-list li {
+  /* Specific brand colors in Riyadh */
+  .brnd-jahez { background-color: #FF1A40; } /* Jahez Pink-Red */
+  .brnd-hunger { background-color: #FFB300; color: #0F172A; } /* HungerStation Yellow */
+  .brnd-herfy { background-color: #007A33; } /* Herfy Green */
+  .brnd-kidzania { background-color: #E2001A; } /* KidZania Red */
+  .brnd-cheeky { background-color: #E05600; } /* Cheeky Monkeys Orange */
+  .brnd-sparkys { background-color: #8A2BE2; } /* Sparky's Purple */
+  .brnd-conezone { background-color: #5C3A21; } /* Cone Zone Brown */
+  .brnd-baskin { background-color: #EA0088; } /* Baskin Robbins Pink */
+  .brnd-mrsool { background-color: #00A3FF; } /* Mrsool Blue */
+  .brnd-babyshop { background-color: #2D3E50; } /* Babyshop Dark Blue */
+  .brnd-redtag { background-color: #000000; } /* RedTag Black */
+  .brnd-mothercare { background-color: #0C2340; } /* Mothercare Navy */
+  .brnd-jarir { background-color: #0A3A60; } /* Jarir Bookstore Navy-Blue */
+  .brnd-extra { background-color: #1E40AF; } /* eExtra Blue */
+  .brnd-riyadhschools { background-color: #064E3B; } /* Riyadh Schools Green */
+  .brnd-mknon { background-color: #0F766E; } /* Mknon Quran Teal */
+
+  .detail-line {
     font-size: 11px;
     color: var(--text-dark);
-    line-height: 1.35;
-    margin-bottom: 4px;
-    position: relative;
-    padding-right: 12px;
+    line-height: 1.4;
   }
 
-  .a4-page[dir="rtl"] .summary-list li {
-    font-size: 11.8px;
-    line-height: 1.42;
-    margin-bottom: 5px;
-  }
-
-  .summary-list li::before {
-    content: '•';
-    position: absolute;
-    right: 0;
-    color: var(--mint);
-    font-weight: 900;
+  .detail-line strong {
+    color: var(--navy);
   }
 
   .full-width-block {
@@ -181,17 +193,16 @@
     color: var(--text-muted);
   }
 
-  /* Badge styling */
-  .chance-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    font-size: 10px;
+  /* Probability badges */
+  .prob-badge {
+    font-size: 9px;
     font-weight: 800;
-    border-radius: 50px;
-    margin-right: 8px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-right: auto;
   }
-  .chance-high { background: #E6F4EA; color: #137333; }
-  .chance-medium { background: #FEF7E0; color: #B06000; }
+  .prob-high { background: #E6F4EA; color: #137333; }
+  .prob-med { background: #FEF7E0; color: #B06000; }
 
   @media print {
     body {
@@ -209,12 +220,12 @@
 </head>
 <body>
 
-  <!-- ==================== PAGE 1: SPONSORSHIP TARGETING & CATEGORIES ==================== -->
+  <!-- ==================== PAGE 1: STRATEGY & TOP SPONSORS ==================== -->
   <div class="a4-page" dir="rtl">
     <div class="header">
       <div class="title-area">
         <h1>خطة الرعاية والتمويل المشترك | ألعاب أكوان</h1>
-        <p>رؤية تسويقية وتحديد الفئات المستهدفة في الرياض (المملكة العربية السعودية)</p>
+        <p>دليل تسويقي داخلي لتمويل الحلقات وتخفيض التكاليف بالرياض (المملكة العربية السعودية)</p>
       </div>
       <div class="logo-area">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
@@ -223,53 +234,69 @@
     </div>
 
     <div class="summary-grid">
-      <!-- Intro Block (Full Width) -->
-      <div class="summary-block full-width-block">
-        <h3>💡 استراتيجية التمويل وتخفيض التكاليف التشغيلية</h3>
-        <ul class="summary-list">
-          <li><strong>أهداف الملف:</strong> توضيح الفئات والشركات في الرياض الأكثر اهتماماً برعاية محتوانا، وتقديم نماذج دمج مبتكرة وعملية تُطرح على طاولة نقاش إدارة "أكوان" لتمويل الحلقات وتغطية التكاليف ذاتياً.</li>
-          <li><strong>معايير اختيار الشركاء:</strong> استهداف الجهات التي تتشارك معنا نفس الفئة العمرية (الأطفال وعائلاتهم)، ولديها ميزانيات تسويقية نشطة للمواسم الصيفية أو العودة للمدارس في المملكة.</li>
-        </ul>
+      <!-- Strategy Block (Full Width) -->
+      <div class="summary-block full-width-block" style="padding: 10px 14px;">
+        <h3>💡 ملخص استراتيجية الرعاية والتمويل</h3>
+        <div class="summary-content" style="gap: 4px;">
+          <div class="detail-line">🔹 <strong>الهدف التشغيلي:</strong> تحديد شركاء تسويقيين في الرياض لتغطية نفقات الإنتاج والجوائز، مع تقديم نماذج دمج غير مزعجة للمشاهدين.</div>
+          <div class="detail-line">🔹 <strong>القيمة المقترحة للرعاة:</strong> وصول مباشر لجمهور العائلات وأطفالهم بالرياض عبر فيديوهات تفاعلية ذات انتشار فيروسي صيفاً.</div>
+        </div>
       </div>
 
-      <!-- Category 1: Play Zones (Slide 2 Sync) -->
+      <!-- Category 1: Play Zones -->
       <div class="summary-block">
-        <h3>🎲 1. الفضاءات ومساحات اللعب الحركي <span class="chance-badge chance-high">قبول مرتفع جداً</span></h3>
-        <ul class="summary-list">
-          <li><strong>أمثلة حقيقية بالرياض:</strong> كيدزانيا الرياض (KidZania)، شيكي مونكي (Cheeky Monkeys)، سباركيز (Sparky's)، ومتحف الغموض الرياض.</li>
-          <li><strong>فكرة الدمج الإعلاني:</strong> تصوير حلقة كاملة داخل فضاء اللعب الخاص بهم؛ حيث يقود ميسر الألعاب التحديات الحركية والذاكرة على أرضهم مع إبراز معالم الفضاء.</li>
-          <li><strong>مصلحة الراعي:</strong> جذب العائلات وأطفالهم لزيارة الفرع خلال لهيب الصيف بالرياض.</li>
-        </ul>
+        <h3>🎡 1. فضاءات ومساحات اللعب الحركي <span class="prob-badge prob-high">قبول مرتفع جداً</span></h3>
+        <div class="summary-content">
+          <div class="brands-row">
+            <span class="brand-logo brnd-kidzania">كيدزانيا الرياض</span>
+            <span class="brand-logo brnd-cheeky">شيكي مونكي</span>
+            <span class="brand-logo brnd-sparkys">سباركيز</span>
+          </div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> تصوير حلقة التحديات كاملة في فرع الراعي بالرياض كاستوديو مفتوح وجاهز مجاناً.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> جذب فوري للعائلات لزيارة الفروع خلال الإجازة الصيفية بالرياض.</div>
+        </div>
       </div>
 
       <!-- Category 2: Delivery & Kids Meals -->
       <div class="summary-block">
-        <h3>🍔 2. منصات التوصيل ومطاعم الأطفال <span class="chance-badge chance-high">قبول مرتفع</span></h3>
-        <ul class="summary-list">
-          <li><strong>أمثلة حقيقية بالرياض:</strong> تطبيق جاهز (Jahez)، تطبيق هنقرستيشن (HungerStation)، ومطاعم هرفي (Herfy) أو شاورمر.</li>
-          <li><strong>فكرة الدمج الإعلاني:</strong> إدراج فقرة "استراحة تحدي أكوان"؛ حيث يطلب الميسر وجبات للأطفال مباشرة عبر تطبيق جاهز أمام الكاميرا، وتُعرض كرتونة المطعم بوضوح (Product Placement).</li>
-          <li><strong>مصلحة الراعي:</strong> ربط خدماتهم بالمرح والطلب السريع للعائلات أثناء المشاهدة.</li>
-        </ul>
+        <h3>🛵 2. منصات التوصيل ومطاعم الأطفال <span class="prob-badge prob-high">قبول مرتفع</span></h3>
+        <div class="summary-content">
+          <div class="brands-row">
+            <span class="brand-logo brnd-jahez">جاهز | Jahez</span>
+            <span class="brand-logo brnd-hunger">هنقرستيشن</span>
+            <span class="brand-logo brnd-herfy">هرفي | Herfy</span>
+          </div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> قيام ميسر الألعاب بطلب الوجبات للأطفال عبر التطبيق الراعي وتناولها وقت استراحة الحلقة.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> ربط خدماتهم بالمرح والطلب السريع للعائلات أثناء فترات المشاهدة المنزلية.</div>
+        </div>
       </div>
 
       <!-- Category 3: Ice Cream & Summer Treats -->
       <div class="summary-block">
-        <h3>🍦 3. المثلجات والحلويات الصيفية <span class="chance-badge chance-high">قبول مرتفع</span></h3>
-        <ul class="summary-list">
-          <li><strong>أمثلة حقيقية بالرياض:</strong> كون زون (Cone Zone)، باسكن روبنز السعودية، وماربل سلاب كريمري.</li>
-          <li><strong>فكرة الدمج الإعلاني:</strong> رعاية المثلجات الصيفية للأطفال؛ حيث يكون التحدي الأخير للفوز بـ "صندوق مثلجات صيفي" مقدم من الماركة، ويوضح توصيلها البارد السريع للبيوت بالرياض.</li>
-          <li><strong>مصلحة الراعي:</strong> تسويق منتجات المثلجات الصيفية للطلب المباشر في حرارة الرياض العالية.</li>
-        </ul>
+        <h3>🍦 3. المثلجات والحلويات الصيفية <span class="prob-badge prob-high">قبول مرتفع جداً</span></h3>
+        <div class="summary-content">
+          <div class="brands-row">
+            <span class="brand-logo brnd-conezone">Cone Zone</span>
+            <span class="brand-logo brnd-baskin">باسكن روبنز</span>
+            <span class="brand-logo brnd-mrsool">مرسول | Mrsool</span>
+          </div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> تحدي نهائي للفوز بصندوق مثلجات باردة وتوصيلها فوراً كعنصر حماسي صيفي.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> الترويج الفعال لمنتجات المثلجات الصيفية للطلب المباشر في حرارة الرياض العالية.</div>
+        </div>
       </div>
 
       <!-- Category 4: Kids Fashion & Apparel -->
       <div class="summary-block">
-        <h3>👕 4. ألبسة وأزياء الأطفال والبراندات <span class="chance-badge chance-medium">قبول متوسط</span></h3>
-        <ul class="summary-list">
-          <li><strong>أمثلة حقيقية بالرياض:</strong> سنتربوينت/محل الأطفال (Babyshop)، ردتاغ (RedTag)، وسيرجنت ميجور الرياض.</li>
-          <li><strong>فكرة الدمج الإعلاني:</strong> توفير الملابس الرياضية واليومية الملونة التي يرتديها الأطفال الأربعة وميسر الألعاب طوال الحلقة، مع إشارة شكر بصيغة "تم إلباس الأطفال بواسطة...".</li>
-          <li><strong>مصلحة الراعي:</strong> إبراز حيوية وجودة الملابس وحركيتها على أطفال حقيقيين ومحبوبين.</li>
-        </ul>
+        <h3>👕 4. ألبسة وأزياء الأطفال والبراندات <span class="prob-badge prob-med">قبول متوسط</span></h3>
+        <div class="summary-content">
+          <div class="brands-row">
+            <span class="brand-logo brnd-babyshop">سنتربوينت</span>
+            <span class="brand-logo brnd-redtag">ردتاغ | RedTag</span>
+            <span class="brand-logo brnd-mothercare">Mothercare</span>
+          </div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> توفير الملابس الرياضية واليومية الملونة التي يرتديها الأطفال الأربعة وميسر الألعاب طوال الحلقة.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> حضور بصرى مستمر طوال الفيديو يبرز حيوية وجودة الملابس على أطفال حقيقيين.</div>
+        </div>
       </div>
     </div>
 
@@ -285,7 +312,7 @@
     <div class="header">
       <div class="title-area">
         <h1>خطة الرعاية والتمويل المشترك | ألعاب أكوان</h1>
-        <p>منهجية الدمج الذكي والتحرك المباشر مع الرعاة في الرياض</p>
+        <p>دليل تسويقي داخلي لتمويل الحلقات وتخفيض التكاليف بالرياض (المملكة العربية السعودية)</p>
       </div>
       <div class="logo-area">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c0-1.5-1-2.5-2.5-3h-3.3c-.8 0-1.5-.7-1.5-1.5v-1c0-.8.7-1.5 1.5-1.5h1.2c.8 0 1.5-.7 1.5-1.5V8c0-1.4-1.1-2.5-2.5-2.5h-2.2c-.8 0-1.5.7-1.5 1.5v.5c0 .6-.4 1-1 1H8.3c-.6 0-1-.4-1-1v-.5C7.3 6.1 6.2 5 4.8 5H4v1.5c0 .8.7 1.5 1.5 1.5h.5c.6 0 1 .4 1 1v3.3c0 .8-.7 1.5-1.5 1.5H3v5.5h2v-3h2v3h2v-3.5c0-.8.7-1.5 1.5-1.5h1c.8 0 1.5.7 1.5 1.5V20h2v-4h2v4h2v-2z"/></svg>
@@ -296,52 +323,60 @@
     <div class="summary-grid">
       <!-- Category 5: Education & Quran Academies -->
       <div class="summary-block">
-        <h3>🕌 5. التعليم الصيفي وحلقات القرآن <span class="chance-badge chance-medium">قبول متوسط</span></h3>
-        <ul class="summary-list">
-          <li><strong>أمثلة حقيقية بالرياض:</strong> مدارس الرياض (الأندية الصيفية)، جمعية مكنون لتحفيظ القرآن بالرياض، وأكاديمية الفيصل العالمية (برامج الأطفال).</li>
-          <li><strong>فكرة الدمج الإعلاني:</strong> تصميم مسابقة لغوية حول تركيب الآيات أو الكلمات القرآنية؛ مع رعاية المركز الصيفي لتكلفة إنتاج تلك المسابقة والترويج للتسجيل بالأنشطة.</li>
-          <li><strong>مصلحة الراعي:</strong> استهداف أولياء الأمور الباحثين عن برامج تربوية هادفة لأبنائهم بالرياض.</li>
-        </ul>
+        <h3>🕌 5. التعليم الصيفي وحلقات القرآن <span class="prob-badge prob-med">قبول متوسط</span></h3>
+        <div class="summary-content">
+          <div class="brands-row">
+            <span class="brand-logo brnd-riyadhschools">مدارس الرياض</span>
+            <span class="brand-logo brnd-mknon">جمعية مكنون</span>
+            <span class="brand-logo brnd-extra">أكاديمية الفيصل</span>
+          </div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> مسابقة لغوية حول تركيب الآيات أو الكلمات القرآنية ورعاية المركز الصيفي لتكلفة إنتاج تلك المسابقة.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> استهداف مباشر لأولياء الأمور الباحثين عن برامج تربوية هادفة لأبنائهم بالرياض.</div>
+        </div>
       </div>
 
       <!-- Category 6: Tech & Jarir Bookstore -->
       <div class="summary-block">
-        <h3>💻 6. أجهزة الحواسيب والقرطاسية التعليمية <span class="chance-badge chance-high">قبول مرتفع</span></h3>
-        <ul class="summary-list">
-          <li><strong>أمثلة حقيقية بالرياض:</strong> مكتبة جرير (Jarir Bookstore)، إكسترا (eExtra)، وتطبيقات المذاكرة والتعليم الرقمي (نون أكاديمي).</li>
-          <li><strong>فكرة الدمج الإعلاني:</strong> دمج أجهزة التابلت أو أجهزة ألعاب الأطفال كأدوات تفعيل المسابقة، وتقديم "لابتوب دراسي/ألعاب" كجائزة كبرى باسم مكتبة جرير في نهاية الموسم.</li>
-          <li><strong>مصلحة الراعي:</strong> رفع المبيعات على الأجهزة المحمولة الموجهة للتعليم والترفيه العائلي.</li>
-        </ul>
+        <h3>💻 6. أجهزة الحواسيب والقرطاسية <span class="prob-badge prob-high">قبول مرتفع</span></h3>
+        <div class="summary-content">
+          <div class="brands-row">
+            <span class="brand-logo brnd-jarir">مكتبة جرير</span>
+            <span class="brand-logo brnd-extra">إكسترا</span>
+            <span class="brand-logo brnd-jahez">نون أكاديمي</span>
+          </div>
+          <div class="detail-line">🔹 <strong>آلية الدمج:</strong> استخدام أجهزة التابلت لحساب نقاط التحديات حياً، وتقديم لابتوب ألعاب/دراسي كجائزة كبرى للموسم.</div>
+          <div class="detail-line">🔹 <strong>العائد للراعي:</strong> رفع المبيعات على الأجهزة والقرطاسية الموجهة للتعليم والترفيه العائلي بالرياض.</div>
+        </div>
       </div>
 
       <!-- Block 7: Operational Integration Strategy (Full Width) -->
       <div class="summary-block full-width-block">
-        <h3>🛠️ منهجية الترويج والدمج الذكي (دون إزعاج المشاهد)</h3>
-        <ul class="summary-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <h3>🛠️ أساليب دمج وتفعيل الرعايات في الحلقات</h3>
+        <div class="summary-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div>
-            <li><strong>الدمج في سياق اللعب (Native Integration):</strong> لا نضع إعلانات منبثقة مزعجة؛ بل يكون المنتج الراعي جزءاً من اللعبة نفسها (مثلاً شرب العصير الراعي وقت الراحة الحقيقية).</li>
-            <li><strong>أكواد الخصم التفاعلية (Promo Codes):</strong> ربط الرعاية بنسبة مبيعات مباشرة عبر توفير كود خصم خاص بمتابعي الحلقة (مثل: Akwan10) لرفع عائد الاستثمار (ROI) للراعي.</li>
+            <div class="detail-line">🔹 <strong>دمج في سياق اللعب (Native Integration):</strong> لا نضع إعلانات منبثقة؛ بل تدمج منتجات الراعي كأدوات لعب أو مأكولات وقت استراحة الأطفال الحقيقية.</div>
+            <div class="detail-line">🔹 <strong>أكواد الخصم التفاعلية (Promo Codes):</strong> ربط الرعاية بنسبة مبيعات مباشرة عبر توفير كود خصم خاص بمتابعي الحلقة (مثل: Akwan10) لرافع الـ ROI.</div>
           </div>
           <div>
-            <li><strong>عروض الرعاية التبادلية (Barter Deals):</strong> في البداية، يمكننا رعاية مكان التصوير والتجهيزات مجاناً مقابل الإعلان والتغطية، لتوفير التكاليف النقدية (Cash Out) بالكامل.</li>
-            <li><strong>رعاية الجوائز العينية:</strong> تقليل تكاليف جوائز الحلقات بطلب تقديمها كمنتجات عينية مباشرة من الشركات الراعية مجاناً.</li>
+            <div class="detail-line">🔹 <strong>عروض الرعاية التبادلية (Barter Deals):</strong> رعاية مكان التصوير والتجهيزات مجاناً مقابل الإعلان والتغطية، لتوفير التكاليف النقدية (Cash Out) بالكامل.</div>
+            <div class="detail-line">🔹 <strong>رعاية الجوائز العينية:</strong> تقليل تكاليف جوائز الحلقات بطلب تقديمها كمنتجات عينية مباشرة من الشركات الراعية مجاناً.</div>
           </div>
-        </ul>
+        </div>
       </div>
 
       <!-- Block 8: Actionable Next Steps (Full Width) -->
       <div class="summary-block full-width-block">
-        <h3>🚀 خطوات التحرك المقترحة لفريق "أكوان" للتواصل</h3>
-        <ul class="summary-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <h3>🚀 خطوات التحرك الفوري لفريق "أكوان"</h3>
+        <div class="summary-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div>
-            <li><strong>إعداد العرض التسويقي الموحد (Pitch Deck):</strong> دمج إحصائيات قناة أكوان الحالية وتفاعل الجمهور، مع وضع تصميم وتفاصيل التحديات الثلاث ورعاياتها المقترحة بملف بصري أنيق.</li>
-            <li><strong>التواصل المستهدف في الرياض:</strong> إرسال العروض التسويقية مباشرة إلى مدراء التسويق (Marketing Managers) في الشركات السابقة عبر شبكة العلاقات وقنوات التواصل الرسمية.</li>
+            <div class="detail-line">🔹 <strong>إعداد العرض التسويقي (Pitch Deck):</strong> دمج أرقام القناة الحالية وتفاصيل التحديات الثلاث ورعاياتها المقترحة بملف بصري أنيق ومختصر.</div>
+            <div class="detail-line">🔹 <strong>التواصل المستهدف بالرياض:</strong> إرسال العروض التسويقية مباشرة إلى مدراء التسويق (Marketing Managers) في الشركات السابقة بالرياض.</div>
           </div>
           <div>
-            <li><strong>البدء بالرعاية التبادلية الكبرى:</strong> التواصل الفوري مع فضاء ألعاب بالرياض (مثل Cheeky Monkeys) لاستضافة كامل موسم التصوير كخطوة أولى لخفض تكلفة الديكور والاستوديو لـ 0 ريال.</li>
-            <li><strong>تحضير النماذج الإعلانية السريعة:</strong> استخدام نماذج الفيديوهات التوضيحية الثلاثة المصممة لتبيان مكان وكيفية ظهور ورعاية المنتج بوضوح للراعي قبل توقيع العقد.</li>
+            <div class="detail-line">🔹 <strong>تأمين فضاء التصوير كأولى الخطوات:</strong> التواصل الفوري مع فضاء لعب بالرياض (مثل Cheeky Monkeys) لاستضافة التصوير وخفض تكلفة الاستوديو لـ 0 ريال.</div>
+            <div class="detail-line">🔹 <strong>استخدام النماذج البصرية:</strong> استخدام نماذج الفيديوهات التوضيحية الثلاثة لتبيان شكل ورعاية المنتج بوضوح للراعي قبل توقيع العقد.</div>
           </div>
-        </ul>
+        </div>
       </div>
     </div>
 
